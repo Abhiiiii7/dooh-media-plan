@@ -1,0 +1,687 @@
+date,venue_id,metro,publisher,delivered_impressions,delivered_spend
+2026-03-02,NYC-030,New York,PumpPlay TV,4333,37.87
+2026-03-03,NYC-030,New York,PumpPlay TV,4375,38.24
+2026-03-04,NYC-030,New York,PumpPlay TV,4443,38.83
+2026-03-05,NYC-030,New York,PumpPlay TV,4221,36.89
+2026-03-06,NYC-030,New York,PumpPlay TV,4425,38.67
+2026-03-07,NYC-030,New York,PumpPlay TV,4440,38.81
+2026-03-08,NYC-030,New York,PumpPlay TV,4909,42.9
+2026-03-09,NYC-030,New York,PumpPlay TV,3878,33.89
+2026-03-10,NYC-030,New York,PumpPlay TV,4120,36.01
+2026-03-11,NYC-030,New York,PumpPlay TV,3951,34.53
+2026-03-12,NYC-030,New York,PumpPlay TV,4050,35.4
+2026-03-13,NYC-030,New York,PumpPlay TV,4553,39.79
+2026-03-14,NYC-030,New York,PumpPlay TV,4954,43.3
+2026-03-15,NYC-030,New York,PumpPlay TV,5129,44.83
+2026-03-02,NYC-039,New York,MallVision,4619,51.64
+2026-03-03,NYC-039,New York,MallVision,4706,52.61
+2026-03-04,NYC-039,New York,MallVision,4686,52.39
+2026-03-05,NYC-039,New York,MallVision,4810,53.78
+2026-03-06,NYC-039,New York,MallVision,5012,56.03
+2026-03-07,NYC-039,New York,MallVision,6297,70.4
+2026-03-08,NYC-039,New York,MallVision,5837,65.26
+2026-03-09,NYC-039,New York,MallVision,4850,54.22
+2026-03-10,NYC-039,New York,MallVision,4361,48.76
+2026-03-11,NYC-039,New York,MallVision,4660,52.1
+2026-03-12,NYC-039,New York,MallVision,4949,55.33
+2026-03-13,NYC-039,New York,MallVision,4928,55.1
+2026-03-14,NYC-039,New York,MallVision,5804,64.89
+2026-03-15,NYC-039,New York,MallVision,6036,67.48
+2026-03-02,NYC-016,New York,AisleCast Media,2838,37.63
+2026-03-03,NYC-016,New York,AisleCast Media,2956,39.2
+2026-03-04,NYC-016,New York,AisleCast Media,2805,37.19
+2026-03-05,NYC-016,New York,AisleCast Media,2698,35.78
+2026-03-06,NYC-016,New York,AisleCast Media,2813,37.3
+2026-03-07,NYC-016,New York,AisleCast Media,2780,36.86
+2026-03-08,NYC-016,New York,AisleCast Media,3451,45.76
+2026-03-09,NYC-016,New York,AisleCast Media,2154,28.56
+2026-03-10,NYC-016,New York,AisleCast Media,2472,32.78
+2026-03-11,NYC-016,New York,AisleCast Media,2832,37.55
+2026-03-12,NYC-016,New York,AisleCast Media,2836,37.61
+2026-03-13,NYC-016,New York,AisleCast Media,2565,34.01
+2026-03-14,NYC-016,New York,AisleCast Media,3229,42.82
+2026-03-15,NYC-016,New York,AisleCast Media,3650,48.4
+2026-03-02,NYC-034,New York,PumpPlay TV,4707,41.66
+2026-03-03,NYC-034,New York,PumpPlay TV,5500,48.67
+2026-03-04,NYC-034,New York,PumpPlay TV,4847,42.9
+2026-03-05,NYC-034,New York,PumpPlay TV,4967,43.96
+2026-03-06,NYC-034,New York,PumpPlay TV,5318,47.06
+2026-03-07,NYC-034,New York,PumpPlay TV,5978,52.91
+2026-03-08,NYC-034,New York,PumpPlay TV,5574,49.33
+2026-03-09,NYC-034,New York,PumpPlay TV,4816,42.62
+2026-03-10,NYC-034,New York,PumpPlay TV,4838,42.82
+2026-03-11,NYC-034,New York,PumpPlay TV,4451,39.39
+2026-03-12,NYC-034,New York,PumpPlay TV,4774,42.25
+2026-03-13,NYC-034,New York,PumpPlay TV,4632,40.99
+2026-03-14,NYC-034,New York,PumpPlay TV,6260,55.4
+2026-03-15,NYC-034,New York,PumpPlay TV,5943,52.6
+2026-03-02,NYC-036,New York,MallVision,8098,89.24
+2026-03-03,NYC-036,New York,MallVision,8185,90.2
+2026-03-04,NYC-036,New York,MallVision,8348,91.99
+2026-03-05,NYC-036,New York,MallVision,8542,94.13
+2026-03-06,NYC-036,New York,MallVision,7743,85.33
+2026-03-07,NYC-036,New York,MallVision,9448,104.12
+2026-03-08,NYC-036,New York,MallVision,10746,118.42
+2026-03-09,NYC-036,New York,MallVision,8034,88.53
+2026-03-10,NYC-036,New York,MallVision,7537,83.06
+2026-03-11,NYC-036,New York,MallVision,8457,93.2
+2026-03-12,NYC-036,New York,MallVision,8467,93.31
+2026-03-13,NYC-036,New York,MallVision,7481,82.44
+2026-03-14,NYC-036,New York,MallVision,10217,112.59
+2026-03-15,NYC-036,New York,MallVision,10523,115.96
+2026-03-02,NYC-029,New York,PumpPlay TV,1930,17.06
+2026-03-03,NYC-029,New York,PumpPlay TV,1959,17.32
+2026-03-04,NYC-029,New York,PumpPlay TV,1728,15.28
+2026-03-05,NYC-029,New York,PumpPlay TV,1925,17.02
+2026-03-06,NYC-029,New York,PumpPlay TV,1853,16.38
+2026-03-07,NYC-029,New York,PumpPlay TV,2242,19.82
+2026-03-08,NYC-029,New York,PumpPlay TV,2430,21.48
+2026-03-09,NYC-029,New York,PumpPlay TV,2055,18.17
+2026-03-10,NYC-029,New York,PumpPlay TV,2091,18.48
+2026-03-11,NYC-029,New York,PumpPlay TV,2036,18.0
+2026-03-12,NYC-029,New York,PumpPlay TV,1875,16.57
+2026-03-13,NYC-029,New York,PumpPlay TV,1927,17.03
+2026-03-14,NYC-029,New York,PumpPlay TV,2415,21.35
+2026-03-15,NYC-029,New York,PumpPlay TV,2326,20.56
+2026-03-02,NYC-018,New York,AisleCast Media,4250,56.95
+2026-03-03,NYC-018,New York,AisleCast Media,4425,59.3
+2026-03-04,NYC-018,New York,AisleCast Media,4201,56.29
+2026-03-05,NYC-018,New York,AisleCast Media,4032,54.03
+2026-03-06,NYC-018,New York,AisleCast Media,4112,55.1
+2026-03-07,NYC-018,New York,AisleCast Media,5355,71.76
+2026-03-08,NYC-018,New York,AisleCast Media,5159,69.13
+2026-03-09,NYC-018,New York,AisleCast Media,4303,57.66
+2026-03-10,NYC-018,New York,AisleCast Media,4386,58.77
+2026-03-11,NYC-018,New York,AisleCast Media,4122,55.23
+2026-03-12,NYC-018,New York,AisleCast Media,4408,59.07
+2026-03-13,NYC-018,New York,AisleCast Media,4312,57.78
+2026-03-14,NYC-018,New York,AisleCast Media,4776,64.0
+2026-03-15,NYC-018,New York,AisleCast Media,5605,75.11
+2026-03-02,NYC-035,New York,PumpPlay TV,5047,48.55
+2026-03-03,NYC-035,New York,PumpPlay TV,4687,45.09
+2026-03-04,NYC-035,New York,PumpPlay TV,4877,46.92
+2026-03-05,NYC-035,New York,PumpPlay TV,4884,46.98
+2026-03-06,NYC-035,New York,PumpPlay TV,5220,50.22
+2026-03-07,NYC-035,New York,PumpPlay TV,6261,60.23
+2026-03-08,NYC-035,New York,PumpPlay TV,6237,60.0
+2026-03-09,NYC-035,New York,PumpPlay TV,5397,51.92
+2026-03-10,NYC-035,New York,PumpPlay TV,5309,51.07
+2026-03-11,NYC-035,New York,PumpPlay TV,5302,51.01
+2026-03-12,NYC-035,New York,PumpPlay TV,5331,51.28
+2026-03-13,NYC-035,New York,PumpPlay TV,5396,51.91
+2026-03-14,NYC-035,New York,PumpPlay TV,5561,53.5
+2026-03-15,NYC-035,New York,PumpPlay TV,6226,59.89
+2026-03-02,NYC-037,New York,MallVision,5488,60.7
+2026-03-03,NYC-037,New York,MallVision,6327,69.98
+2026-03-04,NYC-037,New York,MallVision,6312,69.81
+2026-03-05,NYC-037,New York,MallVision,6710,74.21
+2026-03-06,NYC-037,New York,MallVision,6764,74.81
+2026-03-07,NYC-037,New York,MallVision,7818,86.47
+2026-03-08,NYC-037,New York,MallVision,7492,82.86
+2026-03-09,NYC-037,New York,MallVision,6497,71.86
+2026-03-10,NYC-037,New York,MallVision,6114,67.62
+2026-03-11,NYC-037,New York,MallVision,6313,69.82
+2026-03-12,NYC-037,New York,MallVision,6687,73.96
+2026-03-13,NYC-037,New York,MallVision,6102,67.49
+2026-03-14,NYC-037,New York,MallVision,8097,89.55
+2026-03-15,NYC-037,New York,MallVision,8038,88.9
+2026-03-02,NYC-012,New York,FitView Network,1175,12.28
+2026-03-03,NYC-012,New York,FitView Network,1319,13.78
+2026-03-04,NYC-012,New York,FitView Network,1299,13.57
+2026-03-05,NYC-012,New York,FitView Network,1254,13.1
+2026-03-06,NYC-012,New York,FitView Network,1189,12.43
+2026-03-07,NYC-012,New York,FitView Network,1446,15.11
+2026-03-08,NYC-012,New York,FitView Network,1476,15.42
+2026-03-09,NYC-012,New York,FitView Network,1287,13.45
+2026-03-10,NYC-012,New York,FitView Network,1175,12.28
+2026-03-11,NYC-012,New York,FitView Network,1279,13.37
+2026-03-12,NYC-012,New York,FitView Network,1154,12.06
+2026-03-13,NYC-012,New York,FitView Network,1231,12.86
+2026-03-14,NYC-012,New York,FitView Network,1535,16.04
+2026-03-15,NYC-012,New York,FitView Network,1749,18.28
+2026-03-02,NYC-031,New York,PumpPlay TV,2694,26.24
+2026-03-03,NYC-031,New York,PumpPlay TV,3196,31.13
+2026-03-04,NYC-031,New York,PumpPlay TV,2963,28.86
+2026-03-05,NYC-031,New York,PumpPlay TV,3009,29.31
+2026-03-06,NYC-031,New York,PumpPlay TV,2957,28.8
+2026-03-07,NYC-031,New York,PumpPlay TV,3689,35.93
+2026-03-08,NYC-031,New York,PumpPlay TV,3560,34.67
+2026-03-09,NYC-031,New York,PumpPlay TV,3193,31.1
+2026-03-10,NYC-031,New York,PumpPlay TV,2856,27.82
+2026-03-11,NYC-031,New York,PumpPlay TV,3136,30.54
+2026-03-12,NYC-031,New York,PumpPlay TV,2823,27.5
+2026-03-13,NYC-031,New York,PumpPlay TV,2926,28.5
+2026-03-14,NYC-031,New York,PumpPlay TV,3362,32.75
+2026-03-15,NYC-031,New York,PumpPlay TV,3691,35.95
+2026-03-02,NYC-020,New York,AisleCast Media,2526,36.12
+2026-03-03,NYC-020,New York,AisleCast Media,2313,33.08
+2026-03-04,NYC-020,New York,AisleCast Media,2297,32.85
+2026-03-05,NYC-020,New York,AisleCast Media,2169,31.02
+2026-03-06,NYC-020,New York,AisleCast Media,2292,32.78
+2026-03-07,NYC-020,New York,AisleCast Media,2572,36.78
+2026-03-08,NYC-020,New York,AisleCast Media,2688,38.44
+2026-03-09,NYC-020,New York,AisleCast Media,2356,33.69
+2026-03-10,NYC-020,New York,AisleCast Media,2508,35.86
+2026-03-11,NYC-020,New York,AisleCast Media,2716,38.84
+2026-03-12,NYC-020,New York,AisleCast Media,2242,32.06
+2026-03-13,NYC-020,New York,AisleCast Media,2524,36.09
+2026-03-14,NYC-020,New York,AisleCast Media,2885,41.26
+2026-03-15,NYC-020,New York,AisleCast Media,2818,40.3
+2026-03-02,NYC-021,New York,AisleCast Media,3530,51.15
+2026-03-03,NYC-021,New York,AisleCast Media,3453,50.03
+2026-03-04,NYC-021,New York,AisleCast Media,3463,50.18
+2026-03-05,NYC-021,New York,AisleCast Media,3356,48.63
+2026-03-06,NYC-021,New York,AisleCast Media,3152,45.67
+2026-03-07,NYC-021,New York,AisleCast Media,3819,55.34
+2026-03-08,NYC-021,New York,AisleCast Media,4374,63.38
+2026-03-09,NYC-021,New York,AisleCast Media,3383,49.02
+2026-03-10,NYC-021,New York,AisleCast Media,3318,48.08
+2026-03-11,NYC-021,New York,AisleCast Media,3442,49.87
+2026-03-12,NYC-021,New York,AisleCast Media,3605,52.24
+2026-03-13,NYC-021,New York,AisleCast Media,3478,50.4
+2026-03-14,NYC-021,New York,AisleCast Media,4044,58.6
+2026-03-15,NYC-021,New York,AisleCast Media,4519,65.48
+2026-03-02,NYC-019,New York,AisleCast Media,4855,65.49
+2026-03-03,NYC-019,New York,AisleCast Media,4566,61.6
+2026-03-04,NYC-019,New York,AisleCast Media,4694,63.32
+2026-03-05,NYC-019,New York,AisleCast Media,4765,64.28
+2026-03-06,NYC-019,New York,AisleCast Media,4735,63.88
+2026-03-07,NYC-019,New York,AisleCast Media,5625,75.88
+2026-03-08,NYC-019,New York,AisleCast Media,5620,75.81
+2026-03-09,NYC-019,New York,AisleCast Media,4573,61.69
+2026-03-10,NYC-019,New York,AisleCast Media,4143,55.89
+2026-03-11,NYC-019,New York,AisleCast Media,4621,62.34
+2026-03-12,NYC-019,New York,AisleCast Media,4074,54.96
+2026-03-13,NYC-019,New York,AisleCast Media,4223,56.97
+2026-03-14,NYC-019,New York,AisleCast Media,5850,78.92
+2026-03-15,NYC-019,New York,AisleCast Media,5699,76.88
+2026-03-02,NYC-032,New York,PumpPlay TV,4310,44.13
+2026-03-03,NYC-032,New York,PumpPlay TV,3893,39.86
+2026-03-04,NYC-032,New York,PumpPlay TV,3684,37.72
+2026-03-05,NYC-032,New York,PumpPlay TV,3900,39.94
+2026-03-06,NYC-032,New York,PumpPlay TV,3981,40.77
+2026-03-07,NYC-032,New York,PumpPlay TV,4864,49.81
+2026-03-08,NYC-032,New York,PumpPlay TV,5170,52.94
+2026-03-09,NYC-032,New York,PumpPlay TV,3871,39.64
+2026-03-10,NYC-032,New York,PumpPlay TV,4041,41.38
+2026-03-11,NYC-032,New York,PumpPlay TV,3722,38.11
+2026-03-12,NYC-032,New York,PumpPlay TV,4064,41.62
+2026-03-13,NYC-032,New York,PumpPlay TV,3958,40.53
+2026-03-14,NYC-032,New York,PumpPlay TV,4623,47.34
+2026-03-15,NYC-032,New York,PumpPlay TV,4773,48.88
+2026-03-02,NYC-015,New York,AisleCast Media,5261,82.18
+2026-03-03,NYC-015,New York,AisleCast Media,5233,81.74
+2026-03-04,NYC-015,New York,AisleCast Media,5885,91.92
+2026-03-05,NYC-015,New York,AisleCast Media,5288,82.6
+2026-03-06,NYC-015,New York,AisleCast Media,5242,81.88
+2026-03-07,NYC-015,New York,AisleCast Media,5689,88.86
+2026-03-08,NYC-015,New York,AisleCast Media,6159,96.2
+2026-03-09,NYC-015,New York,AisleCast Media,5235,81.77
+2026-03-10,NYC-015,New York,AisleCast Media,5101,79.68
+2026-03-11,NYC-015,New York,AisleCast Media,5760,89.97
+2026-03-12,NYC-015,New York,AisleCast Media,5267,82.27
+2026-03-13,NYC-015,New York,AisleCast Media,5731,89.52
+2026-03-14,NYC-015,New York,AisleCast Media,6532,102.03
+2026-03-15,NYC-015,New York,AisleCast Media,6522,101.87
+2026-03-02,NYC-033,New York,PumpPlay TV,5254,56.9
+2026-03-03,NYC-033,New York,PumpPlay TV,5283,57.21
+2026-03-04,NYC-033,New York,PumpPlay TV,5827,63.11
+2026-03-05,NYC-033,New York,PumpPlay TV,4547,49.24
+2026-03-06,NYC-033,New York,PumpPlay TV,4648,50.34
+2026-03-07,NYC-033,New York,PumpPlay TV,6252,67.71
+2026-03-08,NYC-033,New York,PumpPlay TV,6468,70.05
+2026-03-09,NYC-033,New York,PumpPlay TV,5501,59.58
+2026-03-10,NYC-033,New York,PumpPlay TV,5432,58.83
+2026-03-11,NYC-033,New York,PumpPlay TV,5160,55.88
+2026-03-12,NYC-033,New York,PumpPlay TV,5605,60.7
+2026-03-13,NYC-033,New York,PumpPlay TV,5609,60.75
+2026-03-14,NYC-033,New York,PumpPlay TV,6534,70.76
+2026-03-15,NYC-033,New York,PumpPlay TV,6835,74.02
+2026-03-02,NYC-004,New York,MetroScreens,14810,139.21
+2026-03-03,NYC-004,New York,MetroScreens,14081,132.36
+2026-03-04,NYC-004,New York,MetroScreens,15182,142.71
+2026-03-05,NYC-004,New York,MetroScreens,14668,137.88
+2026-03-06,NYC-004,New York,MetroScreens,14573,136.99
+2026-03-07,NYC-004,New York,MetroScreens,19402,182.38
+2026-03-08,NYC-004,New York,MetroScreens,15205,142.93
+2026-03-09,NYC-004,New York,MetroScreens,13332,125.32
+2026-03-10,NYC-004,New York,MetroScreens,13534,127.22
+2026-03-11,NYC-004,New York,MetroScreens,14254,133.99
+2026-03-12,NYC-004,New York,MetroScreens,14349,134.88
+2026-03-13,NYC-004,New York,MetroScreens,13254,124.59
+2026-03-14,NYC-004,New York,MetroScreens,16773,157.67
+2026-03-15,NYC-004,New York,MetroScreens,16906,158.92
+2026-03-02,NYC-014,New York,FitView Network,1372,14.94
+2026-03-03,NYC-014,New York,FitView Network,1325,14.43
+2026-03-04,NYC-014,New York,FitView Network,1167,12.71
+2026-03-05,NYC-014,New York,FitView Network,1170,12.74
+2026-03-06,NYC-014,New York,FitView Network,1114,12.13
+2026-03-07,NYC-014,New York,FitView Network,1296,14.11
+2026-03-08,NYC-014,New York,FitView Network,1453,15.82
+2026-03-09,NYC-014,New York,FitView Network,1125,12.25
+2026-03-10,NYC-014,New York,FitView Network,1190,12.96
+2026-03-11,NYC-014,New York,FitView Network,1081,11.77
+2026-03-12,NYC-014,New York,FitView Network,1141,12.43
+2026-03-13,NYC-014,New York,FitView Network,1207,13.14
+2026-03-14,NYC-014,New York,FitView Network,1495,16.28
+2026-03-15,NYC-014,New York,FitView Network,1500,16.34
+2026-03-02,NYC-007,New York,FitView Network,2183,23.99
+2026-03-03,NYC-007,New York,FitView Network,2492,27.39
+2026-03-04,NYC-007,New York,FitView Network,2257,24.8
+2026-03-05,NYC-007,New York,FitView Network,2460,27.04
+2026-03-06,NYC-007,New York,FitView Network,2369,26.04
+2026-03-07,NYC-007,New York,FitView Network,2661,29.24
+2026-03-08,NYC-007,New York,FitView Network,2845,31.27
+2026-03-09,NYC-007,New York,FitView Network,2422,26.62
+2026-03-10,NYC-007,New York,FitView Network,2458,27.01
+2026-03-11,NYC-007,New York,FitView Network,2350,25.83
+2026-03-12,NYC-007,New York,FitView Network,2588,28.44
+2026-03-13,NYC-007,New York,FitView Network,2514,27.63
+2026-03-14,NYC-007,New York,FitView Network,2855,31.38
+2026-03-15,NYC-007,New York,FitView Network,3031,33.31
+2026-03-02,NYC-038,New York,MallVision,2891,38.97
+2026-03-03,NYC-038,New York,MallVision,2895,39.02
+2026-03-04,NYC-038,New York,MallVision,2399,32.34
+2026-03-05,NYC-038,New York,MallVision,2446,32.97
+2026-03-06,NYC-038,New York,MallVision,2821,38.03
+2026-03-07,NYC-038,New York,MallVision,2968,40.01
+2026-03-08,NYC-038,New York,MallVision,2917,39.32
+2026-03-09,NYC-038,New York,MallVision,2515,33.9
+2026-03-10,NYC-038,New York,MallVision,2655,35.79
+2026-03-11,NYC-038,New York,MallVision,2574,34.7
+2026-03-12,NYC-038,New York,MallVision,2489,33.55
+2026-03-13,NYC-038,New York,MallVision,2485,33.5
+2026-03-14,NYC-038,New York,MallVision,3033,40.88
+2026-03-15,NYC-038,New York,MallVision,3002,40.47
+2026-03-02,LAX-033,Los Angeles,PumpPlay TV,2030,16.26
+2026-03-03,LAX-033,Los Angeles,PumpPlay TV,1817,14.55
+2026-03-04,LAX-033,Los Angeles,PumpPlay TV,1880,15.06
+2026-03-05,LAX-033,Los Angeles,PumpPlay TV,1733,13.88
+2026-03-06,LAX-033,Los Angeles,PumpPlay TV,1766,14.15
+2026-03-07,LAX-033,Los Angeles,PumpPlay TV,2091,16.75
+2026-03-08,LAX-033,Los Angeles,PumpPlay TV,1837,14.71
+2026-03-09,LAX-033,Los Angeles,PumpPlay TV,1638,13.12
+2026-03-10,LAX-033,Los Angeles,PumpPlay TV,1591,12.74
+2026-03-11,LAX-033,Los Angeles,PumpPlay TV,1544,12.37
+2026-03-12,LAX-033,Los Angeles,PumpPlay TV,1657,13.27
+2026-03-13,LAX-033,Los Angeles,PumpPlay TV,1927,15.44
+2026-03-14,LAX-033,Los Angeles,PumpPlay TV,2178,17.45
+2026-03-15,LAX-033,Los Angeles,PumpPlay TV,2353,18.85
+2026-03-02,LAX-020,Los Angeles,AisleCast Media,5721,64.7
+2026-03-03,LAX-020,Los Angeles,AisleCast Media,5846,66.12
+2026-03-04,LAX-020,Los Angeles,AisleCast Media,5282,59.74
+2026-03-05,LAX-020,Los Angeles,AisleCast Media,5759,65.13
+2026-03-06,LAX-020,Los Angeles,AisleCast Media,5827,65.9
+2026-03-07,LAX-020,Los Angeles,AisleCast Media,6594,74.58
+2026-03-08,LAX-020,Los Angeles,AisleCast Media,7060,79.85
+2026-03-09,LAX-020,Los Angeles,AisleCast Media,5773,65.29
+2026-03-10,LAX-020,Los Angeles,AisleCast Media,5399,61.06
+2026-03-11,LAX-020,Los Angeles,AisleCast Media,5207,58.89
+2026-03-12,LAX-020,Los Angeles,AisleCast Media,5187,58.66
+2026-03-13,LAX-020,Los Angeles,AisleCast Media,5612,63.47
+2026-03-14,LAX-020,Los Angeles,AisleCast Media,6965,78.77
+2026-03-15,LAX-020,Los Angeles,AisleCast Media,6506,73.58
+2026-03-02,LAX-041,Los Angeles,MallVision,8484,80.43
+2026-03-03,LAX-041,Los Angeles,MallVision,8761,83.05
+2026-03-04,LAX-041,Los Angeles,MallVision,8785,83.28
+2026-03-05,LAX-041,Los Angeles,MallVision,9260,87.78
+2026-03-06,LAX-041,Los Angeles,MallVision,9120,86.46
+2026-03-07,LAX-041,Los Angeles,MallVision,9741,92.34
+2026-03-08,LAX-041,Los Angeles,MallVision,11410,108.17
+2026-03-09,LAX-041,Los Angeles,MallVision,8201,77.75
+2026-03-10,LAX-041,Los Angeles,MallVision,9002,85.34
+2026-03-11,LAX-041,Los Angeles,MallVision,8505,80.63
+2026-03-12,LAX-041,Los Angeles,MallVision,8261,78.31
+2026-03-13,LAX-041,Los Angeles,MallVision,7552,71.59
+2026-03-14,LAX-041,Los Angeles,MallVision,10256,97.23
+2026-03-15,LAX-041,Los Angeles,MallVision,9394,89.06
+2026-03-02,LAX-038,Los Angeles,PumpPlay TV,4193,35.31
+2026-03-03,LAX-038,Los Angeles,PumpPlay TV,4324,36.41
+2026-03-04,LAX-038,Los Angeles,PumpPlay TV,3774,31.78
+2026-03-05,LAX-038,Los Angeles,PumpPlay TV,4035,33.97
+2026-03-06,LAX-038,Los Angeles,PumpPlay TV,3791,31.92
+2026-03-07,LAX-038,Los Angeles,PumpPlay TV,4666,39.29
+2026-03-08,LAX-038,Los Angeles,PumpPlay TV,5074,42.72
+2026-03-09,LAX-038,Los Angeles,PumpPlay TV,3954,33.29
+2026-03-10,LAX-038,Los Angeles,PumpPlay TV,4377,36.85
+2026-03-11,LAX-038,Los Angeles,PumpPlay TV,3849,32.41
+2026-03-12,LAX-038,Los Angeles,PumpPlay TV,4201,35.37
+2026-03-13,LAX-038,Los Angeles,PumpPlay TV,3986,33.56
+2026-03-14,LAX-038,Los Angeles,PumpPlay TV,5080,42.77
+2026-03-15,LAX-038,Los Angeles,PumpPlay TV,4718,39.73
+2026-03-02,LAX-021,Los Angeles,AisleCast Media,4607,49.71
+2026-03-03,LAX-021,Los Angeles,AisleCast Media,4588,49.5
+2026-03-04,LAX-021,Los Angeles,AisleCast Media,4389,47.36
+2026-03-05,LAX-021,Los Angeles,AisleCast Media,4804,51.84
+2026-03-06,LAX-021,Los Angeles,AisleCast Media,4801,51.8
+2026-03-07,LAX-021,Los Angeles,AisleCast Media,5854,63.16
+2026-03-08,LAX-021,Los Angeles,AisleCast Media,6174,66.62
+2026-03-09,LAX-021,Los Angeles,AisleCast Media,5022,54.19
+2026-03-10,LAX-021,Los Angeles,AisleCast Media,4516,48.73
+2026-03-11,LAX-021,Los Angeles,AisleCast Media,4724,50.97
+2026-03-12,LAX-021,Los Angeles,AisleCast Media,4447,47.98
+2026-03-13,LAX-021,Los Angeles,AisleCast Media,4627,49.93
+2026-03-14,LAX-021,Los Angeles,AisleCast Media,5449,58.79
+2026-03-15,LAX-021,Los Angeles,AisleCast Media,6202,66.92
+2026-03-02,LAX-040,Los Angeles,MallVision,5580,60.65
+2026-03-03,LAX-040,Los Angeles,MallVision,5389,58.58
+2026-03-04,LAX-040,Los Angeles,MallVision,5851,63.6
+2026-03-05,LAX-040,Los Angeles,MallVision,4749,51.62
+2026-03-06,LAX-040,Los Angeles,MallVision,4801,52.19
+2026-03-07,LAX-040,Los Angeles,MallVision,6999,76.08
+2026-03-08,LAX-040,Los Angeles,MallVision,6704,72.87
+2026-03-09,LAX-040,Los Angeles,MallVision,5542,60.24
+2026-03-10,LAX-040,Los Angeles,MallVision,5026,54.63
+2026-03-11,LAX-040,Los Angeles,MallVision,5453,59.27
+2026-03-12,LAX-040,Los Angeles,MallVision,6117,66.49
+2026-03-13,LAX-040,Los Angeles,MallVision,5730,62.29
+2026-03-14,LAX-040,Los Angeles,MallVision,6748,73.35
+2026-03-15,LAX-040,Los Angeles,MallVision,6504,70.7
+2026-03-02,LAX-036,Los Angeles,PumpPlay TV,2533,20.95
+2026-03-03,LAX-036,Los Angeles,PumpPlay TV,2263,18.72
+2026-03-04,LAX-036,Los Angeles,PumpPlay TV,2634,21.78
+2026-03-05,LAX-036,Los Angeles,PumpPlay TV,2726,22.54
+2026-03-06,LAX-036,Los Angeles,PumpPlay TV,2349,19.43
+2026-03-07,LAX-036,Los Angeles,PumpPlay TV,3048,25.21
+2026-03-08,LAX-036,Los Angeles,PumpPlay TV,2953,24.42
+2026-03-09,LAX-036,Los Angeles,PumpPlay TV,2444,20.21
+2026-03-10,LAX-036,Los Angeles,PumpPlay TV,2602,21.52
+2026-03-11,LAX-036,Los Angeles,PumpPlay TV,2270,18.77
+2026-03-12,LAX-036,Los Angeles,PumpPlay TV,2690,22.25
+2026-03-13,LAX-036,Los Angeles,PumpPlay TV,2711,22.42
+2026-03-14,LAX-036,Los Angeles,PumpPlay TV,3126,25.85
+2026-03-15,LAX-036,Los Angeles,PumpPlay TV,2701,22.34
+2026-03-02,LAX-035,Los Angeles,PumpPlay TV,4369,38.1
+2026-03-03,LAX-035,Los Angeles,PumpPlay TV,4991,43.52
+2026-03-04,LAX-035,Los Angeles,PumpPlay TV,3872,33.76
+2026-03-05,LAX-035,Los Angeles,PumpPlay TV,4550,39.68
+2026-03-06,LAX-035,Los Angeles,PumpPlay TV,4318,37.65
+2026-03-07,LAX-035,Los Angeles,PumpPlay TV,5959,51.96
+2026-03-08,LAX-035,Los Angeles,PumpPlay TV,5455,47.57
+2026-03-09,LAX-035,Los Angeles,PumpPlay TV,4759,41.5
+2026-03-10,LAX-035,Los Angeles,PumpPlay TV,4805,41.9
+2026-03-11,LAX-035,Los Angeles,PumpPlay TV,5159,44.99
+2026-03-12,LAX-035,Los Angeles,PumpPlay TV,4590,40.02
+2026-03-13,LAX-035,Los Angeles,PumpPlay TV,4752,41.44
+2026-03-14,LAX-035,Los Angeles,PumpPlay TV,5178,45.15
+2026-03-15,LAX-035,Los Angeles,PumpPlay TV,6091,53.11
+2026-03-02,LAX-022,Los Angeles,AisleCast Media,2214,25.37
+2026-03-03,LAX-022,Los Angeles,AisleCast Media,2242,25.69
+2026-03-04,LAX-022,Los Angeles,AisleCast Media,2317,26.55
+2026-03-05,LAX-022,Los Angeles,AisleCast Media,2103,24.1
+2026-03-06,LAX-022,Los Angeles,AisleCast Media,2352,26.95
+2026-03-07,LAX-022,Los Angeles,AisleCast Media,3003,34.41
+2026-03-08,LAX-022,Los Angeles,AisleCast Media,2888,33.1
+2026-03-09,LAX-022,Los Angeles,AisleCast Media,2099,24.05
+2026-03-10,LAX-022,Los Angeles,AisleCast Media,2303,26.39
+2026-03-11,LAX-022,Los Angeles,AisleCast Media,2423,27.77
+2026-03-12,LAX-022,Los Angeles,AisleCast Media,2059,23.6
+2026-03-13,LAX-022,Los Angeles,AisleCast Media,2171,24.88
+2026-03-14,LAX-022,Los Angeles,AisleCast Media,2988,34.24
+2026-03-15,LAX-022,Los Angeles,AisleCast Media,2884,33.05
+2026-03-02,LAX-015,Los Angeles,FitView Network,2694,26.7
+2026-03-03,LAX-015,Los Angeles,FitView Network,2922,28.96
+2026-03-04,LAX-015,Los Angeles,FitView Network,2703,26.79
+2026-03-05,LAX-015,Los Angeles,FitView Network,2733,27.08
+2026-03-06,LAX-015,Los Angeles,FitView Network,3056,30.28
+2026-03-07,LAX-015,Los Angeles,FitView Network,3175,31.46
+2026-03-08,LAX-015,Los Angeles,FitView Network,3062,30.34
+2026-03-09,LAX-015,Los Angeles,FitView Network,2696,26.72
+2026-03-10,LAX-015,Los Angeles,FitView Network,2698,26.74
+2026-03-11,LAX-015,Los Angeles,FitView Network,2546,25.23
+2026-03-12,LAX-015,Los Angeles,FitView Network,2466,24.44
+2026-03-13,LAX-015,Los Angeles,FitView Network,2993,29.66
+2026-03-14,LAX-015,Los Angeles,FitView Network,3279,32.49
+2026-03-15,LAX-015,Los Angeles,FitView Network,3075,30.47
+2026-03-02,LAX-044,Los Angeles,MallVision,6761,84.72
+2026-03-03,LAX-044,Los Angeles,MallVision,6367,79.78
+2026-03-04,LAX-044,Los Angeles,MallVision,6312,79.09
+2026-03-05,LAX-044,Los Angeles,MallVision,6625,83.01
+2026-03-06,LAX-044,Los Angeles,MallVision,5912,74.08
+2026-03-07,LAX-044,Los Angeles,MallVision,8006,100.32
+2026-03-08,LAX-044,Los Angeles,MallVision,8741,109.52
+2026-03-09,LAX-044,Los Angeles,MallVision,6588,82.55
+2026-03-10,LAX-044,Los Angeles,MallVision,6264,78.49
+2026-03-11,LAX-044,Los Angeles,MallVision,6214,77.86
+2026-03-12,LAX-044,Los Angeles,MallVision,6251,78.33
+2026-03-13,LAX-044,Los Angeles,MallVision,6311,79.08
+2026-03-14,LAX-044,Los Angeles,MallVision,7663,96.02
+2026-03-15,LAX-044,Los Angeles,MallVision,8272,103.65
+2026-03-02,LAX-018,Los Angeles,AisleCast Media,1959,26.8
+2026-03-03,LAX-018,Los Angeles,AisleCast Media,2300,31.46
+2026-03-04,LAX-018,Los Angeles,AisleCast Media,2137,29.23
+2026-03-05,LAX-018,Los Angeles,AisleCast Media,2236,30.59
+2026-03-06,LAX-018,Los Angeles,AisleCast Media,2039,27.89
+2026-03-07,LAX-018,Los Angeles,AisleCast Media,2888,39.51
+2026-03-08,LAX-018,Los Angeles,AisleCast Media,2875,39.33
+2026-03-09,LAX-018,Los Angeles,AisleCast Media,2312,31.63
+2026-03-10,LAX-018,Los Angeles,AisleCast Media,1988,27.2
+2026-03-11,LAX-018,Los Angeles,AisleCast Media,2295,31.4
+2026-03-12,LAX-018,Los Angeles,AisleCast Media,2240,30.64
+2026-03-13,LAX-018,Los Angeles,AisleCast Media,1976,27.03
+2026-03-14,LAX-018,Los Angeles,AisleCast Media,2671,36.54
+2026-03-15,LAX-018,Los Angeles,AisleCast Media,2734,37.4
+2026-03-02,LAX-019,Los Angeles,AisleCast Media,6137,89.29
+2026-03-03,LAX-019,Los Angeles,AisleCast Media,6002,87.33
+2026-03-04,LAX-019,Los Angeles,AisleCast Media,6043,87.93
+2026-03-05,LAX-019,Los Angeles,AisleCast Media,6464,94.05
+2026-03-06,LAX-019,Los Angeles,AisleCast Media,6376,92.77
+2026-03-07,LAX-019,Los Angeles,AisleCast Media,6016,87.53
+2026-03-08,LAX-019,Los Angeles,AisleCast Media,7127,103.7
+2026-03-09,LAX-019,Los Angeles,AisleCast Media,5880,85.55
+2026-03-10,LAX-019,Los Angeles,AisleCast Media,5315,77.33
+2026-03-11,LAX-019,Los Angeles,AisleCast Media,5973,86.91
+2026-03-12,LAX-019,Los Angeles,AisleCast Media,6384,92.89
+2026-03-13,LAX-019,Los Angeles,AisleCast Media,5552,80.78
+2026-03-14,LAX-019,Los Angeles,AisleCast Media,7412,107.84
+2026-03-15,LAX-019,Los Angeles,AisleCast Media,6867,99.91
+2026-03-02,LAX-034,Los Angeles,PumpPlay TV,3664,36.6
+2026-03-03,LAX-034,Los Angeles,PumpPlay TV,4156,41.52
+2026-03-04,LAX-034,Los Angeles,PumpPlay TV,3693,36.89
+2026-03-05,LAX-034,Los Angeles,PumpPlay TV,3923,39.19
+2026-03-06,LAX-034,Los Angeles,PumpPlay TV,3389,33.86
+2026-03-07,LAX-034,Los Angeles,PumpPlay TV,5192,51.87
+2026-03-08,LAX-034,Los Angeles,PumpPlay TV,4839,48.34
+2026-03-09,LAX-034,Los Angeles,PumpPlay TV,3776,37.72
+2026-03-10,LAX-034,Los Angeles,PumpPlay TV,3949,39.45
+2026-03-11,LAX-034,Los Angeles,PumpPlay TV,3495,34.92
+2026-03-12,LAX-034,Los Angeles,PumpPlay TV,4088,40.84
+2026-03-13,LAX-034,Los Angeles,PumpPlay TV,3743,37.39
+2026-03-14,LAX-034,Los Angeles,PumpPlay TV,4613,46.08
+2026-03-15,LAX-034,Los Angeles,PumpPlay TV,4533,45.28
+2026-03-02,LAX-009,Los Angeles,FitView Network,2843,28.29
+2026-03-03,LAX-009,Los Angeles,FitView Network,3068,30.53
+2026-03-04,LAX-009,Los Angeles,FitView Network,2991,29.76
+2026-03-05,LAX-009,Los Angeles,FitView Network,3061,30.46
+2026-03-06,LAX-009,Los Angeles,FitView Network,2944,29.29
+2026-03-07,LAX-009,Los Angeles,FitView Network,3715,36.96
+2026-03-08,LAX-009,Los Angeles,FitView Network,3513,34.95
+2026-03-09,LAX-009,Los Angeles,FitView Network,3340,33.23
+2026-03-10,LAX-009,Los Angeles,FitView Network,2668,26.55
+2026-03-11,LAX-009,Los Angeles,FitView Network,3168,31.52
+2026-03-12,LAX-009,Los Angeles,FitView Network,3187,31.71
+2026-03-13,LAX-009,Los Angeles,FitView Network,2795,27.81
+2026-03-14,LAX-009,Los Angeles,FitView Network,4086,40.66
+2026-03-15,LAX-009,Los Angeles,FitView Network,3819,38.0
+2026-03-02,LAX-043,Los Angeles,MallVision,5308,66.51
+2026-03-03,LAX-043,Los Angeles,MallVision,5024,62.95
+2026-03-04,LAX-043,Los Angeles,MallVision,4950,62.02
+2026-03-05,LAX-043,Los Angeles,MallVision,4953,62.06
+2026-03-06,LAX-043,Los Angeles,MallVision,5133,64.32
+2026-03-07,LAX-043,Los Angeles,MallVision,6652,83.35
+2026-03-08,LAX-043,Los Angeles,MallVision,6203,77.72
+2026-03-09,LAX-043,Los Angeles,MallVision,4741,59.4
+2026-03-10,LAX-043,Los Angeles,MallVision,5264,65.96
+2026-03-11,LAX-043,Los Angeles,MallVision,5293,66.32
+2026-03-12,LAX-043,Los Angeles,MallVision,5213,65.32
+2026-03-13,LAX-043,Los Angeles,MallVision,5240,65.66
+2026-03-14,LAX-043,Los Angeles,MallVision,6036,75.63
+2026-03-15,LAX-043,Los Angeles,MallVision,5794,72.6
+2026-03-02,LAX-037,Los Angeles,PumpPlay TV,4828,45.19
+2026-03-03,LAX-037,Los Angeles,PumpPlay TV,4593,42.99
+2026-03-04,LAX-037,Los Angeles,PumpPlay TV,5166,48.35
+2026-03-05,LAX-037,Los Angeles,PumpPlay TV,5068,47.44
+2026-03-06,LAX-037,Los Angeles,PumpPlay TV,4959,46.42
+2026-03-07,LAX-037,Los Angeles,PumpPlay TV,5126,47.98
+2026-03-08,LAX-037,Los Angeles,PumpPlay TV,5765,53.96
+2026-03-09,LAX-037,Los Angeles,PumpPlay TV,5436,50.88
+2026-03-10,LAX-037,Los Angeles,PumpPlay TV,4890,45.77
+2026-03-11,LAX-037,Los Angeles,PumpPlay TV,5203,48.7
+2026-03-12,LAX-037,Los Angeles,PumpPlay TV,4668,43.69
+2026-03-13,LAX-037,Los Angeles,PumpPlay TV,5533,51.79
+2026-03-14,LAX-037,Los Angeles,PumpPlay TV,6177,57.82
+2026-03-15,LAX-037,Los Angeles,PumpPlay TV,6339,59.33
+2026-03-02,LAX-006,Los Angeles,MetroScreens,2230,19.51
+2026-03-03,LAX-006,Los Angeles,MetroScreens,2135,18.68
+2026-03-04,LAX-006,Los Angeles,MetroScreens,1921,16.81
+2026-03-05,LAX-006,Los Angeles,MetroScreens,1887,16.51
+2026-03-06,LAX-006,Los Angeles,MetroScreens,1919,16.79
+2026-03-07,LAX-006,Los Angeles,MetroScreens,2467,21.59
+2026-03-08,LAX-006,Los Angeles,MetroScreens,2379,20.82
+2026-03-09,LAX-006,Los Angeles,MetroScreens,1910,16.71
+2026-03-10,LAX-006,Los Angeles,MetroScreens,2129,18.63
+2026-03-11,LAX-006,Los Angeles,MetroScreens,1943,17.0
+2026-03-12,LAX-006,Los Angeles,MetroScreens,2227,19.49
+2026-03-13,LAX-006,Los Angeles,MetroScreens,1967,17.21
+2026-03-14,LAX-006,Los Angeles,MetroScreens,2650,23.19
+2026-03-15,LAX-006,Los Angeles,MetroScreens,2445,21.39
+2026-03-02,CHI-021,Chicago,AisleCast Media,3666,35.16
+2026-03-03,CHI-021,Chicago,AisleCast Media,3315,31.79
+2026-03-04,CHI-021,Chicago,AisleCast Media,3288,31.53
+2026-03-05,CHI-021,Chicago,AisleCast Media,3561,34.15
+2026-03-06,CHI-021,Chicago,AisleCast Media,3671,35.2
+2026-03-07,CHI-021,Chicago,AisleCast Media,4250,40.76
+2026-03-08,CHI-021,Chicago,AisleCast Media,3913,37.53
+2026-03-09,CHI-021,Chicago,AisleCast Media,3183,30.52
+2026-03-10,CHI-021,Chicago,AisleCast Media,3169,30.39
+2026-03-11,CHI-021,Chicago,AisleCast Media,3098,29.71
+2026-03-12,CHI-021,Chicago,AisleCast Media,3488,33.45
+2026-03-13,CHI-021,Chicago,AisleCast Media,3700,35.48
+2026-03-14,CHI-021,Chicago,AisleCast Media,4236,40.62
+2026-03-15,CHI-021,Chicago,AisleCast Media,3665,35.15
+2026-03-02,CHI-038,Chicago,MallVision,4566,41.41
+2026-03-03,CHI-038,Chicago,MallVision,4574,41.49
+2026-03-04,CHI-038,Chicago,MallVision,5200,47.16
+2026-03-05,CHI-038,Chicago,MallVision,4215,38.23
+2026-03-06,CHI-038,Chicago,MallVision,4511,40.91
+2026-03-07,CHI-038,Chicago,MallVision,6230,56.51
+2026-03-08,CHI-038,Chicago,MallVision,5804,52.64
+2026-03-09,CHI-038,Chicago,MallVision,4775,43.31
+2026-03-10,CHI-038,Chicago,MallVision,4651,42.18
+2026-03-11,CHI-038,Chicago,MallVision,4711,42.73
+2026-03-12,CHI-038,Chicago,MallVision,4835,43.85
+2026-03-13,CHI-038,Chicago,MallVision,4395,39.86
+2026-03-14,CHI-038,Chicago,MallVision,5949,53.96
+2026-03-15,CHI-038,Chicago,MallVision,5186,47.04
+2026-03-02,CHI-017,Chicago,AisleCast Media,2027,20.33
+2026-03-03,CHI-017,Chicago,AisleCast Media,2010,20.16
+2026-03-04,CHI-017,Chicago,AisleCast Media,1915,19.21
+2026-03-05,CHI-017,Chicago,AisleCast Media,1985,19.91
+2026-03-06,CHI-017,Chicago,AisleCast Media,1914,19.2
+2026-03-07,CHI-017,Chicago,AisleCast Media,2276,22.83
+2026-03-08,CHI-017,Chicago,AisleCast Media,2381,23.88
+2026-03-09,CHI-017,Chicago,AisleCast Media,1856,18.62
+2026-03-10,CHI-017,Chicago,AisleCast Media,2027,20.33
+2026-03-11,CHI-017,Chicago,AisleCast Media,1851,18.57
+2026-03-12,CHI-017,Chicago,AisleCast Media,2073,20.79
+2026-03-13,CHI-017,Chicago,AisleCast Media,1847,18.53
+2026-03-14,CHI-017,Chicago,AisleCast Media,2350,23.57
+2026-03-15,CHI-017,Chicago,AisleCast Media,2341,23.48
+2026-03-02,CHI-034,Chicago,PumpPlay TV,2533,18.01
+2026-03-03,CHI-034,Chicago,PumpPlay TV,2393,17.01
+2026-03-04,CHI-034,Chicago,PumpPlay TV,2317,16.47
+2026-03-05,CHI-034,Chicago,PumpPlay TV,2417,17.18
+2026-03-06,CHI-034,Chicago,PumpPlay TV,2050,14.58
+2026-03-07,CHI-034,Chicago,PumpPlay TV,2864,20.36
+2026-03-08,CHI-034,Chicago,PumpPlay TV,3215,22.86
+2026-03-09,CHI-034,Chicago,PumpPlay TV,2365,16.82
+2026-03-10,CHI-034,Chicago,PumpPlay TV,2356,16.75
+2026-03-11,CHI-034,Chicago,PumpPlay TV,2424,17.23
+2026-03-12,CHI-034,Chicago,PumpPlay TV,2473,17.58
+2026-03-13,CHI-034,Chicago,PumpPlay TV,2065,14.68
+2026-03-14,CHI-034,Chicago,PumpPlay TV,2581,18.35
+2026-03-15,CHI-034,Chicago,PumpPlay TV,2907,20.67
+2026-03-02,CHI-035,Chicago,MallVision,7650,73.52
+2026-03-03,CHI-035,Chicago,MallVision,8622,82.86
+2026-03-04,CHI-035,Chicago,MallVision,7842,75.36
+2026-03-05,CHI-035,Chicago,MallVision,7065,67.89
+2026-03-06,CHI-035,Chicago,MallVision,7385,70.97
+2026-03-07,CHI-035,Chicago,MallVision,8165,78.47
+2026-03-08,CHI-035,Chicago,MallVision,9641,92.65
+2026-03-09,CHI-035,Chicago,MallVision,7903,75.95
+2026-03-10,CHI-035,Chicago,MallVision,7789,74.85
+2026-03-11,CHI-035,Chicago,MallVision,8510,81.78
+2026-03-12,CHI-035,Chicago,MallVision,8568,82.34
+2026-03-13,CHI-035,Chicago,MallVision,7911,76.02
+2026-03-14,CHI-035,Chicago,MallVision,8526,81.93
+2026-03-15,CHI-035,Chicago,MallVision,10141,97.46
+2026-03-02,CHI-016,Chicago,AisleCast Media,5046,51.52
+2026-03-03,CHI-016,Chicago,AisleCast Media,4973,50.77
+2026-03-04,CHI-016,Chicago,AisleCast Media,5170,52.79
+2026-03-05,CHI-016,Chicago,AisleCast Media,4542,46.37
+2026-03-06,CHI-016,Chicago,AisleCast Media,5471,55.86
+2026-03-07,CHI-016,Chicago,AisleCast Media,5630,57.48
+2026-03-08,CHI-016,Chicago,AisleCast Media,6242,63.73
+2026-03-09,CHI-016,Chicago,AisleCast Media,4388,44.8
+2026-03-10,CHI-016,Chicago,AisleCast Media,4610,47.07
+2026-03-11,CHI-016,Chicago,AisleCast Media,5327,54.39
+2026-03-12,CHI-016,Chicago,AisleCast Media,4806,49.07
+2026-03-13,CHI-016,Chicago,AisleCast Media,5129,52.37
+2026-03-14,CHI-016,Chicago,AisleCast Media,6059,61.86
+2026-03-15,CHI-016,Chicago,AisleCast Media,5936,60.61
+2026-03-02,CHI-039,Chicago,MallVision,8641,79.32
+2026-03-03,CHI-039,Chicago,MallVision,7874,72.28
+2026-03-04,CHI-039,Chicago,MallVision,7134,65.49
+2026-03-05,CHI-039,Chicago,MallVision,7602,69.79
+2026-03-06,CHI-039,Chicago,MallVision,8251,75.74
+2026-03-07,CHI-039,Chicago,MallVision,10003,91.83
+2026-03-08,CHI-039,Chicago,MallVision,8853,81.27
+2026-03-09,CHI-039,Chicago,MallVision,7640,70.14
+2026-03-10,CHI-039,Chicago,MallVision,7708,70.76
+2026-03-11,CHI-039,Chicago,MallVision,7812,71.71
+2026-03-12,CHI-039,Chicago,MallVision,7328,67.27
+2026-03-13,CHI-039,Chicago,MallVision,7686,70.56
+2026-03-14,CHI-039,Chicago,MallVision,9344,85.78
+2026-03-15,CHI-039,Chicago,MallVision,10224,93.86
+2026-03-02,CHI-042,Chicago,MallVision,7723,73.21
+2026-03-03,CHI-042,Chicago,MallVision,7301,69.21
+2026-03-04,CHI-042,Chicago,MallVision,7193,68.19
+2026-03-05,CHI-042,Chicago,MallVision,7428,70.42
+2026-03-06,CHI-042,Chicago,MallVision,7005,66.41
+2026-03-07,CHI-042,Chicago,MallVision,8391,79.55
+2026-03-08,CHI-042,Chicago,MallVision,8503,80.61
+2026-03-09,CHI-042,Chicago,MallVision,7085,67.17
+2026-03-10,CHI-042,Chicago,MallVision,6852,64.96
+2026-03-11,CHI-042,Chicago,MallVision,7437,70.5
+2026-03-12,CHI-042,Chicago,MallVision,7688,72.88
+2026-03-13,CHI-042,Chicago,MallVision,6664,63.17
+2026-03-14,CHI-042,Chicago,MallVision,9025,85.56
+2026-03-15,CHI-042,Chicago,MallVision,8893,84.31
+2026-03-02,CHI-019,Chicago,AisleCast Media,6109,71.23
+2026-03-03,CHI-019,Chicago,AisleCast Media,5981,69.74
+2026-03-04,CHI-019,Chicago,AisleCast Media,5464,63.71
+2026-03-05,CHI-019,Chicago,AisleCast Media,5532,64.5
+2026-03-06,CHI-019,Chicago,AisleCast Media,5996,69.91
+2026-03-07,CHI-019,Chicago,AisleCast Media,7775,90.66
+2026-03-08,CHI-019,Chicago,AisleCast Media,6350,74.04
+2026-03-09,CHI-019,Chicago,AisleCast Media,6110,71.24
+2026-03-10,CHI-019,Chicago,AisleCast Media,6413,74.78
+2026-03-11,CHI-019,Chicago,AisleCast Media,5931,69.16
+2026-03-12,CHI-019,Chicago,AisleCast Media,6183,72.09
+2026-03-13,CHI-019,Chicago,AisleCast Media,5733,66.85
+2026-03-14,CHI-019,Chicago,AisleCast Media,7271,84.78
+2026-03-15,CHI-019,Chicago,AisleCast Media,6611,77.08
+2026-03-02,CHI-040,Chicago,MallVision,4820,48.01
+2026-03-03,CHI-040,Chicago,MallVision,5926,59.02
+2026-03-04,CHI-040,Chicago,MallVision,5277,52.56
+2026-03-05,CHI-040,Chicago,MallVision,5455,54.33
+2026-03-06,CHI-040,Chicago,MallVision,5142,51.21
+2026-03-07,CHI-040,Chicago,MallVision,6281,62.56
+2026-03-08,CHI-040,Chicago,MallVision,6790,67.63
+2026-03-09,CHI-040,Chicago,MallVision,5363,53.42
+2026-03-10,CHI-040,Chicago,MallVision,5736,57.13
+2026-03-11,CHI-040,Chicago,MallVision,5761,57.38
+2026-03-12,CHI-040,Chicago,MallVision,5717,56.94
+2026-03-13,CHI-040,Chicago,MallVision,5689,56.66
+2026-03-14,CHI-040,Chicago,MallVision,7511,74.81
+2026-03-15,CHI-040,Chicago,MallVision,6422,63.96

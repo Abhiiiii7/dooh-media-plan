@@ -1,0 +1,50 @@
+venue_id,metro,publisher,venue_type,planned_spend,cpm_floor,audience_index,planned_impressions
+NYC-030,New York,PumpPlay TV,Gas,1500.0,8.74,117,171625.0
+NYC-039,New York,MallVision,Mall,1500.0,11.18,132,134168.0
+NYC-016,New York,AisleCast Media,Grocery,1100.0,13.26,154,82956.0
+NYC-034,New York,PumpPlay TV,Gas,1800.0,8.85,110,203390.0
+NYC-036,New York,MallVision,Mall,2600.0,11.02,116,235935.0
+NYC-029,New York,PumpPlay TV,Gas,700.0,8.84,109,79186.0
+NYC-018,New York,AisleCast Media,Grocery,1700.0,13.4,149,126866.0
+NYC-035,New York,PumpPlay TV,Gas,2100.0,9.62,112,218295.0
+NYC-037,New York,MallVision,Mall,2000.0,11.06,118,180832.0
+NYC-012,New York,FitView Network,Gym,400.0,10.45,121,38278.0
+NYC-031,New York,PumpPlay TV,Gas,1200.0,9.74,112,123203.0
+NYC-020,New York,AisleCast Media,Grocery,1000.0,14.3,150,69930.0
+NYC-021,New York,AisleCast Media,Grocery,1500.0,14.49,155,103520.0
+NYC-019,New York,AisleCast Media,Grocery,1800.0,13.49,148,133432.0
+NYC-032,New York,PumpPlay TV,Gas,1700.0,10.24,117,166016.0
+NYC-015,New York,AisleCast Media,Grocery,2500.0,15.62,153,160051.0
+NYC-033,New York,PumpPlay TV,Gas,2400.0,10.83,111,221607.0
+NYC-004,New York,MetroScreens,Transit,4000.0,9.4,103,425532.0
+NYC-014,New York,FitView Network,Gym,400.0,10.89,112,36731.0
+NYC-007,New York,FitView Network,Gym,800.0,10.99,110,72793.0
+NYC-038,New York,MallVision,Mall,1000.0,13.48,116,74184.0
+LAX-033,Los Angeles,PumpPlay TV,Gas,600.0,8.01,116,74906.0
+LAX-020,Los Angeles,AisleCast Media,Grocery,1900.0,11.31,154,167993.0
+LAX-041,Los Angeles,MallVision,Mall,2300.0,9.48,121,242616.0
+LAX-038,Los Angeles,PumpPlay TV,Gas,1400.0,8.42,118,166271.0
+LAX-021,Los Angeles,AisleCast Media,Grocery,1500.0,10.79,132,139018.0
+LAX-040,Los Angeles,MallVision,Mall,1700.0,10.87,127,156394.0
+LAX-036,Los Angeles,PumpPlay TV,Gas,900.0,8.27,107,108827.0
+LAX-035,Los Angeles,PumpPlay TV,Gas,1700.0,8.72,112,194954.0
+LAX-022,Los Angeles,AisleCast Media,Grocery,800.0,11.46,141,69808.0
+LAX-015,Los Angeles,FitView Network,Gym,800.0,9.91,123,80727.0
+LAX-044,Los Angeles,MallVision,Mall,2300.0,12.53,134,183559.0
+LAX-018,Los Angeles,AisleCast Media,Grocery,900.0,13.68,159,65789.0
+LAX-019,Los Angeles,AisleCast Media,Grocery,2600.0,14.55,155,178694.0
+LAX-034,Los Angeles,PumpPlay TV,Gas,1600.0,9.99,117,160160.0
+LAX-009,Los Angeles,FitView Network,Gym,900.0,9.95,116,90452.0
+LAX-043,Los Angeles,MallVision,Mall,1800.0,12.53,132,143655.0
+LAX-037,Los Angeles,PumpPlay TV,Gas,2000.0,9.36,113,213675.0
+LAX-006,Los Angeles,MetroScreens,Transit,500.0,8.75,102,57143.0
+CHI-021,Chicago,AisleCast Media,Grocery,1000.0,9.59,151,104275.0
+CHI-038,Chicago,MallVision,Mall,1200.0,9.07,134,132304.0
+CHI-017,Chicago,AisleCast Media,Grocery,600.0,10.03,151,59821.0
+CHI-034,Chicago,PumpPlay TV,Gas,700.0,7.11,109,98453.0
+CHI-035,Chicago,MallVision,Mall,2200.0,9.61,130,228928.0
+CHI-016,Chicago,AisleCast Media,Grocery,1500.0,10.21,148,146915.0
+CHI-039,Chicago,MallVision,Mall,2100.0,9.18,127,228758.0
+CHI-042,Chicago,MallVision,Mall,2000.0,9.48,123,210970.0
+CHI-019,Chicago,AisleCast Media,Grocery,2100.0,11.66,159,180103.0
+CHI-040,Chicago,MallVision,Mall,1600.0,9.96,129,160643.0
