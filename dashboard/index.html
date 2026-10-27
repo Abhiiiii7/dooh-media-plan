@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOOH Pacing Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  color-scheme: light;
+  --surface: #fcfcfb; --card: #ffffff; --border: #e6e5e0;
+  --text: #0b0b0b; --text-2: #52514e; --muted: #8a8984;
+  --grid: #ecebe7; --series-1: #2a78d6; --plan: #9a9993;
+  --good: #0ca30c; --warn: #b07a00; --critical: #d03b3b;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface: #141413; --card: #1a1a19; --border: #2e2e2b;
+    --text: #f0efec; --text-2: #c3c2b7; --muted: #8f8e88;
+    --grid: #2a2a27; --series-1: #3987e5; --plan: #7d7c76;
+    --good: #0ca30c; --warn: #fab219; --critical: #e66767;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #141413; --card: #1a1a19; --border: #2e2e2b;
+  --text: #f0efec; --text-2: #c3c2b7; --muted: #8f8e88;
+  --grid: #2a2a27; --series-1: #3987e5; --plan: #7d7c76;
+  --good: #0ca30c; --warn: #fab219; --critical: #e66767;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--surface); color: var(--text);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+.sub { color: var(--text-2); margin: 0 0 20px; }
+.note { color: var(--muted); font-size: 12px; }
+.controls { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center;
+  background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 16px; margin-bottom: 16px; }
+.controls label { color: var(--text-2); font-size: 13px; display: flex; gap: 8px; align-items: center; }
+select, input[type=range] { accent-color: var(--series-1); }
+select { background: var(--card); color: var(--text); border: 1px solid var(--border);
+  border-radius: 6px; padding: 4px 8px; font: inherit; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.kpi { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+.kpi .label { color: var(--text-2); font-size: 12px; }
+.kpi .value { font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.kpi .hint { color: var(--muted); font-size: 12px; }
+.grid2 { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; margin-bottom: 12px; }
+@media (max-width: 800px) { .grid2 { grid-template-columns: 1fr; } }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+.card h2 { font-size: 15px; margin: 0 0 2px; }
+.card p.desc { color: var(--text-2); font-size: 12px; margin: 0 0 10px; }
+.chartbox { position: relative; height: 280px; }
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: 7px 8px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--text-2); font-weight: 500; font-size: 12px; }
+.status { display: inline-flex; gap: 5px; align-items: center; font-weight: 500; }
+.status .dot { width: 8px; height: 8px; border-radius: 50%; }
+.s-behind { color: var(--critical); } .s-behind .dot { background: var(--critical); }
+.s-ahead { color: var(--warn); } .s-ahead .dot { background: var(--warn); }
+.s-ok { color: var(--text-2); } .s-ok .dot { background: var(--good); }
+footer { margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>DOOH Pacing &amp; Delivery</h1>
+  <p class="sub">Brightside Grocers spring produce launch · New York, Los Angeles, Chicago · 28-day flight, $75K.
+    <span class="note">Simulated data for practice; brand and publishers are fictional.</span></p>
+
+  <div class="controls">
+    <label>Report as of flight day
+      <input type="range" id="asof" min="1" max="14" value="14">
+      <strong id="asofLabel">14</strong></label>
+    <label>Metro
+      <select id="metro"><option>All</option><option>New York</option><option>Los Angeles</option><option>Chicago</option></select></label>
+    <span class="note">Delivery data runs through day 14.</span>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">Planned impressions</div><div class="value" id="kPlan"></div><div class="hint">full flight</div></div>
+    <div class="kpi"><div class="label">Delivered to date</div><div class="value" id="kDel"></div><div class="hint" id="kDelHint"></div></div>
+    <div class="kpi"><div class="label">Pace index</div><div class="value" id="kPace"></div><div class="hint">1.00x = on plan</div></div>
+    <div class="kpi"><div class="label">Effective CPM</div><div class="value" id="kCpm"></div><div class="hint">delivered spend ÷ impressions</div></div>
+    <div class="kpi"><div class="label">Projected shortfall</div><div class="value" id="kShort"></div><div class="hint">if today's pace holds</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>Cumulative delivery vs plan</h2>
+      <p class="desc">The gap between the lines is impressions owed. Hover for daily values.</p>
+      <div class="chartbox"><canvas id="curve"></canvas></div>
+    </div>
+    <div class="card">
+      <h2>Planned spend by venue type</h2>
+      <p class="desc">Where the budget went after venue scoring.</p>
+      <div class="chartbox"><canvas id="mix"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Pacing by publisher</h2>
+    <p class="desc">Behind below 0.90x, ahead above 1.10x. This is the list to take to publishers for make-goods.</p>
+    <div class="tablewrap"><table id="pubTable">
+      <thead><tr><th>Publisher</th><th>Planned</th><th>Expected to date</th><th>Delivered</th><th>Pace</th><th>Projected shortfall</th><th>Status</th></tr></thead>
+      <tbody></tbody></table></div>
+  </div>
+
+  <footer class="note">Built from <code>data/media_plan.csv</code> and <code>data/delivery_daily.csv</code> by <code>src/build_dashboard.py</code>. Numbers match the Pacing sheet in <code>output/DOOH_Media_Plan.xlsx</code>.</footer>
+</div>
+
+<script>
+const D = {"flightDays":28,"budget":75000,"plan":[["NYC-030","New York","PumpPlay TV","Gas",1500.0,171625.0],["NYC-039","New York","MallVision","Mall",1500.0,134168.0],["NYC-016","New York","AisleCast Media","Grocery",1100.0,82956.0],["NYC-034","New York","PumpPlay TV","Gas",1800.0,203390.0],["NYC-036","New York","MallVision","Mall",2600.0,235935.0],["NYC-029","New York","PumpPlay TV","Gas",700.0,79186.0],["NYC-018","New York","AisleCast Media","Grocery",1700.0,126866.0],["NYC-035","New York","PumpPlay TV","Gas",2100.0,218295.0],["NYC-037","New York","MallVision","Mall",2000.0,180832.0],["NYC-012","New York","FitView Network","Gym",400.0,38278.0],["NYC-031","New York","PumpPlay TV","Gas",1200.0,123203.0],["NYC-020","New York","AisleCast Media","Grocery",1000.0,69930.0],["NYC-021","New York","AisleCast Media","Grocery",1500.0,103520.0],["NYC-019","New York","AisleCast Media","Grocery",1800.0,133432.0],["NYC-032","New York","PumpPlay TV","Gas",1700.0,166016.0],["NYC-015","New York","AisleCast Media","Grocery",2500.0,160051.0],["NYC-033","New York","PumpPlay TV","Gas",2400.0,221607.0],["NYC-004","New York","MetroScreens","Transit",4000.0,425532.0],["NYC-014","New York","FitView Network","Gym",400.0,36731.0],["NYC-007","New York","FitView Network","Gym",800.0,72793.0],["NYC-038","New York","MallVision","Mall",1000.0,74184.0],["LAX-033","Los Angeles","PumpPlay TV","Gas",600.0,74906.0],["LAX-020","Los Angeles","AisleCast Media","Grocery",1900.0,167993.0],["LAX-041","Los Angeles","MallVision","Mall",2300.0,242616.0],["LAX-038","Los Angeles","PumpPlay TV","Gas",1400.0,166271.0],["LAX-021","Los Angeles","AisleCast Media","Grocery",1500.0,139018.0],["LAX-040","Los Angeles","MallVision","Mall",1700.0,156394.0],["LAX-036","Los Angeles","PumpPlay TV","Gas",900.0,108827.0],["LAX-035","Los Angeles","PumpPlay TV","Gas",1700.0,194954.0],["LAX-022","Los Angeles","AisleCast Media","Grocery",800.0,69808.0],["LAX-015","Los Angeles","FitView Network","Gym",800.0,80727.0],["LAX-044","Los Angeles","MallVision","Mall",2300.0,183559.0],["LAX-018","Los Angeles","AisleCast Media","Grocery",900.0,65789.0],["LAX-019","Los Angeles","AisleCast Media","Grocery",2600.0,178694.0],["LAX-034","Los Angeles","PumpPlay TV","Gas",1600.0,160160.0],["LAX-009","Los Angeles","FitView Network","Gym",900.0,90452.0],["LAX-043","Los Angeles","MallVision","Mall",1800.0,143655.0],["LAX-037","Los Angeles","PumpPlay TV","Gas",2000.0,213675.0],["LAX-006","Los Angeles","MetroScreens","Transit",500.0,57143.0],["CHI-021","Chicago","AisleCast Media","Grocery",1000.0,104275.0],["CHI-038","Chicago","MallVision","Mall",1200.0,132304.0],["CHI-017","Chicago","AisleCast Media","Grocery",600.0,59821.0],["CHI-034","Chicago","PumpPlay TV","Gas",700.0,98453.0],["CHI-035","Chicago","MallVision","Mall",2200.0,228928.0],["CHI-016","Chicago","AisleCast Media","Grocery",1500.0,146915.0],["CHI-039","Chicago","MallVision","Mall",2100.0,228758.0],["CHI-042","Chicago","MallVision","Mall",2000.0,210970.0],["CHI-019","Chicago","AisleCast Media","Grocery",2100.0,180103.0],["CHI-040","Chicago","MallVision","Mall",1600.0,160643.0]],"deliv":[[1,"NYC-030",4333,37.87],[2,"NYC-030",4375,38.24],[3,"NYC-030",4443,38.83],[4,"NYC-030",4221,36.89],[5,"NYC-030",4425,38.67],[6,"NYC-030",4440,38.81],[7,"NYC-030",4909,42.9],[8,"NYC-030",3878,33.89],[9,"NYC-030",4120,36.01],[10,"NYC-030",3951,34.53],[11,"NYC-030",4050,35.4],[12,"NYC-030",4553,39.79],[13,"NYC-030",4954,43.3],[14,"NYC-030",5129,44.83],[1,"NYC-039",4619,51.64],[2,"NYC-039",4706,52.61],[3,"NYC-039",4686,52.39],[4,"NYC-039",4810,53.78],[5,"NYC-039",5012,56.03],[6,"NYC-039",6297,70.4],[7,"NYC-039",5837,65.26],[8,"NYC-039",4850,54.22],[9,"NYC-039",4361,48.76],[10,"NYC-039",4660,52.1],[11,"NYC-039",4949,55.33],[12,"NYC-039",4928,55.1],[13,"NYC-039",5804,64.89],[14,"NYC-039",6036,67.48],[1,"NYC-016",2838,37.63],[2,"NYC-016",2956,39.2],[3,"NYC-016",2805,37.19],[4,"NYC-016",2698,35.78],[5,"NYC-016",2813,37.3],[6,"NYC-016",2780,36.86],[7,"NYC-016",3451,45.76],[8,"NYC-016",2154,28.56],[9,"NYC-016",2472,32.78],[10,"NYC-016",2832,37.55],[11,"NYC-016",2836,37.61],[12,"NYC-016",2565,34.01],[13,"NYC-016",3229,42.82],[14,"NYC-016",3650,48.4],[1,"NYC-034",4707,41.66],[2,"NYC-034",5500,48.67],[3,"NYC-034",4847,42.9],[4,"NYC-034",4967,43.96],[5,"NYC-034",5318,47.06],[6,"NYC-034",5978,52.91],[7,"NYC-034",5574,49.33],[8,"NYC-034",4816,42.62],[9,"NYC-034",4838,42.82],[10,"NYC-034",4451,39.39],[11,"NYC-034",4774,42.25],[12,"NYC-034",4632,40.99],[13,"NYC-034",6260,55.4],[14,"NYC-034",5943,52.6],[1,"NYC-036",8098,89.24],[2,"NYC-036",8185,90.2],[3,"NYC-036",8348,91.99],[4,"NYC-036",8542,94.13],[5,"NYC-036",7743,85.33],[6,"NYC-036",9448,104.12],[7,"NYC-036",10746,118.42],[8,"NYC-036",8034,88.53],[9,"NYC-036",7537,83.06],[10,"NYC-036",8457,93.2],[11,"NYC-036",8467,93.31],[12,"NYC-036",7481,82.44],[13,"NYC-036",10217,112.59],[14,"NYC-036",10523,115.96],[1,"NYC-029",1930,17.06],[2,"NYC-029",1959,17.32],[3,"NYC-029",1728,15.28],[4,"NYC-029",1925,17.02],[5,"NYC-029",1853,16.38],[6,"NYC-029",2242,19.82],[7,"NYC-029",2430,21.48],[8,"NYC-029",2055,18.17],[9,"NYC-029",2091,18.48],[10,"NYC-029",2036,18.0],[11,"NYC-029",1875,16.57],[12,"NYC-029",1927,17.03],[13,"NYC-029",2415,21.35],[14,"NYC-029",2326,20.56],[1,"NYC-018",4250,56.95],[2,"NYC-018",4425,59.3],[3,"NYC-018",4201,56.29],[4,"NYC-018",4032,54.03],[5,"NYC-018",4112,55.1],[6,"NYC-018",5355,71.76],[7,"NYC-018",5159,69.13],[8,"NYC-018",4303,57.66],[9,"NYC-018",4386,58.77],[10,"NYC-018",4122,55.23],[11,"NYC-018",4408,59.07],[12,"NYC-018",4312,57.78],[13,"NYC-018",4776,64.0],[14,"NYC-018",5605,75.11],[1,"NYC-035",5047,48.55],[2,"NYC-035",4687,45.09],[3,"NYC-035",4877,46.92],[4,"NYC-035",4884,46.98],[5,"NYC-035",5220,50.22],[6,"NYC-035",6261,60.23],[7,"NYC-035",6237,60.0],[8,"NYC-035",5397,51.92],[9,"NYC-035",5309,51.07],[10,"NYC-035",5302,51.01],[11,"NYC-035",5331,51.28],[12,"NYC-035",5396,51.91],[13,"NYC-035",5561,53.5],[14,"NYC-035",6226,59.89],[1,"NYC-037",5488,60.7],[2,"NYC-037",6327,69.98],[3,"NYC-037",6312,69.81],[4,"NYC-037",6710,74.21],[5,"NYC-037",6764,74.81],[6,"NYC-037",7818,86.47],[7,"NYC-037",7492,82.86],[8,"NYC-037",6497,71.86],[9,"NYC-037",6114,67.62],[10,"NYC-037",6313,69.82],[11,"NYC-037",6687,73.96],[12,"NYC-037",6102,67.49],[13,"NYC-037",8097,89.55],[14,"NYC-037",8038,88.9],[1,"NYC-012",1175,12.28],[2,"NYC-012",1319,13.78],[3,"NYC-012",1299,13.57],[4,"NYC-012",1254,13.1],[5,"NYC-012",1189,12.43],[6,"NYC-012",1446,15.11],[7,"NYC-012",1476,15.42],[8,"NYC-012",1287,13.45],[9,"NYC-012",1175,12.28],[10,"NYC-012",1279,13.37],[11,"NYC-012",1154,12.06],[12,"NYC-012",1231,12.86],[13,"NYC-012",1535,16.04],[14,"NYC-012",1749,18.28],[1,"NYC-031",2694,26.24],[2,"NYC-031",3196,31.13],[3,"NYC-031",2963,28.86],[4,"NYC-031",3009,29.31],[5,"NYC-031",2957,28.8],[6,"NYC-031",3689,35.93],[7,"NYC-031",3560,34.67],[8,"NYC-031",3193,31.1],[9,"NYC-031",2856,27.82],[10,"NYC-031",3136,30.54],[11,"NYC-031",2823,27.5],[12,"NYC-031",2926,28.5],[13,"NYC-031",3362,32.75],[14,"NYC-031",3691,35.95],[1,"NYC-020",2526,36.12],[2,"NYC-020",2313,33.08],[3,"NYC-020",2297,32.85],[4,"NYC-020",2169,31.02],[5,"NYC-020",2292,32.78],[6,"NYC-020",2572,36.78],[7,"NYC-020",2688,38.44],[8,"NYC-020",2356,33.69],[9,"NYC-020",2508,35.86],[10,"NYC-020",2716,38.84],[11,"NYC-020",2242,32.06],[12,"NYC-020",2524,36.09],[13,"NYC-020",2885,41.26],[14,"NYC-020",2818,40.3],[1,"NYC-021",3530,51.15],[2,"NYC-021",3453,50.03],[3,"NYC-021",3463,50.18],[4,"NYC-021",3356,48.63],[5,"NYC-021",3152,45.67],[6,"NYC-021",3819,55.34],[7,"NYC-021",4374,63.38],[8,"NYC-021",3383,49.02],[9,"NYC-021",3318,48.08],[10,"NYC-021",3442,49.87],[11,"NYC-021",3605,52.24],[12,"NYC-021",3478,50.4],[13,"NYC-021",4044,58.6],[14,"NYC-021",4519,65.48],[1,"NYC-019",4855,65.49],[2,"NYC-019",4566,61.6],[3,"NYC-019",4694,63.32],[4,"NYC-019",4765,64.28],[5,"NYC-019",4735,63.88],[6,"NYC-019",5625,75.88],[7,"NYC-019",5620,75.81],[8,"NYC-019",4573,61.69],[9,"NYC-019",4143,55.89],[10,"NYC-019",4621,62.34],[11,"NYC-019",4074,54.96],[12,"NYC-019",4223,56.97],[13,"NYC-019",5850,78.92],[14,"NYC-019",5699,76.88],[1,"NYC-032",4310,44.13],[2,"NYC-032",3893,39.86],[3,"NYC-032",3684,37.72],[4,"NYC-032",3900,39.94],[5,"NYC-032",3981,40.77],[6,"NYC-032",4864,49.81],[7,"NYC-032",5170,52.94],[8,"NYC-032",3871,39.64],[9,"NYC-032",4041,41.38],[10,"NYC-032",3722,38.11],[11,"NYC-032",4064,41.62],[12,"NYC-032",3958,40.53],[13,"NYC-032",4623,47.34],[14,"NYC-032",4773,48.88],[1,"NYC-015",5261,82.18],[2,"NYC-015",5233,81.74],[3,"NYC-015",5885,91.92],[4,"NYC-015",5288,82.6],[5,"NYC-015",5242,81.88],[6,"NYC-015",5689,88.86],[7,"NYC-015",6159,96.2],[8,"NYC-015",5235,81.77],[9,"NYC-015",5101,79.68],[10,"NYC-015",5760,89.97],[11,"NYC-015",5267,82.27],[12,"NYC-015",5731,89.52],[13,"NYC-015",6532,102.03],[14,"NYC-015",6522,101.87],[1,"NYC-033",5254,56.9],[2,"NYC-033",5283,57.21],[3,"NYC-033",5827,63.11],[4,"NYC-033",4547,49.24],[5,"NYC-033",4648,50.34],[6,"NYC-033",6252,67.71],[7,"NYC-033",6468,70.05],[8,"NYC-033",5501,59.58],[9,"NYC-033",5432,58.83],[10,"NYC-033",5160,55.88],[11,"NYC-033",5605,60.7],[12,"NYC-033",5609,60.75],[13,"NYC-033",6534,70.76],[14,"NYC-033",6835,74.02],[1,"NYC-004",14810,139.21],[2,"NYC-004",14081,132.36],[3,"NYC-004",15182,142.71],[4,"NYC-004",14668,137.88],[5,"NYC-004",14573,136.99],[6,"NYC-004",19402,182.38],[7,"NYC-004",15205,142.93],[8,"NYC-004",13332,125.32],[9,"NYC-004",13534,127.22],[10,"NYC-004",14254,133.99],[11,"NYC-004",14349,134.88],[12,"NYC-004",13254,124.59],[13,"NYC-004",16773,157.67],[14,"NYC-004",16906,158.92],[1,"NYC-014",1372,14.94],[2,"NYC-014",1325,14.43],[3,"NYC-014",1167,12.71],[4,"NYC-014",1170,12.74],[5,"NYC-014",1114,12.13],[6,"NYC-014",1296,14.11],[7,"NYC-014",1453,15.82],[8,"NYC-014",1125,12.25],[9,"NYC-014",1190,12.96],[10,"NYC-014",1081,11.77],[11,"NYC-014",1141,12.43],[12,"NYC-014",1207,13.14],[13,"NYC-014",1495,16.28],[14,"NYC-014",1500,16.34],[1,"NYC-007",2183,23.99],[2,"NYC-007",2492,27.39],[3,"NYC-007",2257,24.8],[4,"NYC-007",2460,27.04],[5,"NYC-007",2369,26.04],[6,"NYC-007",2661,29.24],[7,"NYC-007",2845,31.27],[8,"NYC-007",2422,26.62],[9,"NYC-007",2458,27.01],[10,"NYC-007",2350,25.83],[11,"NYC-007",2588,28.44],[12,"NYC-007",2514,27.63],[13,"NYC-007",2855,31.38],[14,"NYC-007",3031,33.31],[1,"NYC-038",2891,38.97],[2,"NYC-038",2895,39.02],[3,"NYC-038",2399,32.34],[4,"NYC-038",2446,32.97],[5,"NYC-038",2821,38.03],[6,"NYC-038",2968,40.01],[7,"NYC-038",2917,39.32],[8,"NYC-038",2515,33.9],[9,"NYC-038",2655,35.79],[10,"NYC-038",2574,34.7],[11,"NYC-038",2489,33.55],[12,"NYC-038",2485,33.5],[13,"NYC-038",3033,40.88],[14,"NYC-038",3002,40.47],[1,"LAX-033",2030,16.26],[2,"LAX-033",1817,14.55],[3,"LAX-033",1880,15.06],[4,"LAX-033",1733,13.88],[5,"LAX-033",1766,14.15],[6,"LAX-033",2091,16.75],[7,"LAX-033",1837,14.71],[8,"LAX-033",1638,13.12],[9,"LAX-033",1591,12.74],[10,"LAX-033",1544,12.37],[11,"LAX-033",1657,13.27],[12,"LAX-033",1927,15.44],[13,"LAX-033",2178,17.45],[14,"LAX-033",2353,18.85],[1,"LAX-020",5721,64.7],[2,"LAX-020",5846,66.12],[3,"LAX-020",5282,59.74],[4,"LAX-020",5759,65.13],[5,"LAX-020",5827,65.9],[6,"LAX-020",6594,74.58],[7,"LAX-020",7060,79.85],[8,"LAX-020",5773,65.29],[9,"LAX-020",5399,61.06],[10,"LAX-020",5207,58.89],[11,"LAX-020",5187,58.66],[12,"LAX-020",5612,63.47],[13,"LAX-020",6965,78.77],[14,"LAX-020",6506,73.58],[1,"LAX-041",8484,80.43],[2,"LAX-041",8761,83.05],[3,"LAX-041",8785,83.28],[4,"LAX-041",9260,87.78],[5,"LAX-041",9120,86.46],[6,"LAX-041",9741,92.34],[7,"LAX-041",11410,108.17],[8,"LAX-041",8201,77.75],[9,"LAX-041",9002,85.34],[10,"LAX-041",8505,80.63],[11,"LAX-041",8261,78.31],[12,"LAX-041",7552,71.59],[13,"LAX-041",10256,97.23],[14,"LAX-041",9394,89.06],[1,"LAX-038",4193,35.31],[2,"LAX-038",4324,36.41],[3,"LAX-038",3774,31.78],[4,"LAX-038",4035,33.97],[5,"LAX-038",3791,31.92],[6,"LAX-038",4666,39.29],[7,"LAX-038",5074,42.72],[8,"LAX-038",3954,33.29],[9,"LAX-038",4377,36.85],[10,"LAX-038",3849,32.41],[11,"LAX-038",4201,35.37],[12,"LAX-038",3986,33.56],[13,"LAX-038",5080,42.77],[14,"LAX-038",4718,39.73],[1,"LAX-021",4607,49.71],[2,"LAX-021",4588,49.5],[3,"LAX-021",4389,47.36],[4,"LAX-021",4804,51.84],[5,"LAX-021",4801,51.8],[6,"LAX-021",5854,63.16],[7,"LAX-021",6174,66.62],[8,"LAX-021",5022,54.19],[9,"LAX-021",4516,48.73],[10,"LAX-021",4724,50.97],[11,"LAX-021",4447,47.98],[12,"LAX-021",4627,49.93],[13,"LAX-021",5449,58.79],[14,"LAX-021",6202,66.92],[1,"LAX-040",5580,60.65],[2,"LAX-040",5389,58.58],[3,"LAX-040",5851,63.6],[4,"LAX-040",4749,51.62],[5,"LAX-040",4801,52.19],[6,"LAX-040",6999,76.08],[7,"LAX-040",6704,72.87],[8,"LAX-040",5542,60.24],[9,"LAX-040",5026,54.63],[10,"LAX-040",5453,59.27],[11,"LAX-040",6117,66.49],[12,"LAX-040",5730,62.29],[13,"LAX-040",6748,73.35],[14,"LAX-040",6504,70.7],[1,"LAX-036",2533,20.95],[2,"LAX-036",2263,18.72],[3,"LAX-036",2634,21.78],[4,"LAX-036",2726,22.54],[5,"LAX-036",2349,19.43],[6,"LAX-036",3048,25.21],[7,"LAX-036",2953,24.42],[8,"LAX-036",2444,20.21],[9,"LAX-036",2602,21.52],[10,"LAX-036",2270,18.77],[11,"LAX-036",2690,22.25],[12,"LAX-036",2711,22.42],[13,"LAX-036",3126,25.85],[14,"LAX-036",2701,22.34],[1,"LAX-035",4369,38.1],[2,"LAX-035",4991,43.52],[3,"LAX-035",3872,33.76],[4,"LAX-035",4550,39.68],[5,"LAX-035",4318,37.65],[6,"LAX-035",5959,51.96],[7,"LAX-035",5455,47.57],[8,"LAX-035",4759,41.5],[9,"LAX-035",4805,41.9],[10,"LAX-035",5159,44.99],[11,"LAX-035",4590,40.02],[12,"LAX-035",4752,41.44],[13,"LAX-035",5178,45.15],[14,"LAX-035",6091,53.11],[1,"LAX-022",2214,25.37],[2,"LAX-022",2242,25.69],[3,"LAX-022",2317,26.55],[4,"LAX-022",2103,24.1],[5,"LAX-022",2352,26.95],[6,"LAX-022",3003,34.41],[7,"LAX-022",2888,33.1],[8,"LAX-022",2099,24.05],[9,"LAX-022",2303,26.39],[10,"LAX-022",2423,27.77],[11,"LAX-022",2059,23.6],[12,"LAX-022",2171,24.88],[13,"LAX-022",2988,34.24],[14,"LAX-022",2884,33.05],[1,"LAX-015",2694,26.7],[2,"LAX-015",2922,28.96],[3,"LAX-015",2703,26.79],[4,"LAX-015",2733,27.08],[5,"LAX-015",3056,30.28],[6,"LAX-015",3175,31.46],[7,"LAX-015",3062,30.34],[8,"LAX-015",2696,26.72],[9,"LAX-015",2698,26.74],[10,"LAX-015",2546,25.23],[11,"LAX-015",2466,24.44],[12,"LAX-015",2993,29.66],[13,"LAX-015",3279,32.49],[14,"LAX-015",3075,30.47],[1,"LAX-044",6761,84.72],[2,"LAX-044",6367,79.78],[3,"LAX-044",6312,79.09],[4,"LAX-044",6625,83.01],[5,"LAX-044",5912,74.08],[6,"LAX-044",8006,100.32],[7,"LAX-044",8741,109.52],[8,"LAX-044",6588,82.55],[9,"LAX-044",6264,78.49],[10,"LAX-044",6214,77.86],[11,"LAX-044",6251,78.33],[12,"LAX-044",6311,79.08],[13,"LAX-044",7663,96.02],[14,"LAX-044",8272,103.65],[1,"LAX-018",1959,26.8],[2,"LAX-018",2300,31.46],[3,"LAX-018",2137,29.23],[4,"LAX-018",2236,30.59],[5,"LAX-018",2039,27.89],[6,"LAX-018",2888,39.51],[7,"LAX-018",2875,39.33],[8,"LAX-018",2312,31.63],[9,"LAX-018",1988,27.2],[10,"LAX-018",2295,31.4],[11,"LAX-018",2240,30.64],[12,"LAX-018",1976,27.03],[13,"LAX-018",2671,36.54],[14,"LAX-018",2734,37.4],[1,"LAX-019",6137,89.29],[2,"LAX-019",6002,87.33],[3,"LAX-019",6043,87.93],[4,"LAX-019",6464,94.05],[5,"LAX-019",6376,92.77],[6,"LAX-019",6016,87.53],[7,"LAX-019",7127,103.7],[8,"LAX-019",5880,85.55],[9,"LAX-019",5315,77.33],[10,"LAX-019",5973,86.91],[11,"LAX-019",6384,92.89],[12,"LAX-019",5552,80.78],[13,"LAX-019",7412,107.84],[14,"LAX-019",6867,99.91],[1,"LAX-034",3664,36.6],[2,"LAX-034",4156,41.52],[3,"LAX-034",3693,36.89],[4,"LAX-034",3923,39.19],[5,"LAX-034",3389,33.86],[6,"LAX-034",5192,51.87],[7,"LAX-034",4839,48.34],[8,"LAX-034",3776,37.72],[9,"LAX-034",3949,39.45],[10,"LAX-034",3495,34.92],[11,"LAX-034",4088,40.84],[12,"LAX-034",3743,37.39],[13,"LAX-034",4613,46.08],[14,"LAX-034",4533,45.28],[1,"LAX-009",2843,28.29],[2,"LAX-009",3068,30.53],[3,"LAX-009",2991,29.76],[4,"LAX-009",3061,30.46],[5,"LAX-009",2944,29.29],[6,"LAX-009",3715,36.96],[7,"LAX-009",3513,34.95],[8,"LAX-009",3340,33.23],[9,"LAX-009",2668,26.55],[10,"LAX-009",3168,31.52],[11,"LAX-009",3187,31.71],[12,"LAX-009",2795,27.81],[13,"LAX-009",4086,40.66],[14,"LAX-009",3819,38.0],[1,"LAX-043",5308,66.51],[2,"LAX-043",5024,62.95],[3,"LAX-043",4950,62.02],[4,"LAX-043",4953,62.06],[5,"LAX-043",5133,64.32],[6,"LAX-043",6652,83.35],[7,"LAX-043",6203,77.72],[8,"LAX-043",4741,59.4],[9,"LAX-043",5264,65.96],[10,"LAX-043",5293,66.32],[11,"LAX-043",5213,65.32],[12,"LAX-043",5240,65.66],[13,"LAX-043",6036,75.63],[14,"LAX-043",5794,72.6],[1,"LAX-037",4828,45.19],[2,"LAX-037",4593,42.99],[3,"LAX-037",5166,48.35],[4,"LAX-037",5068,47.44],[5,"LAX-037",4959,46.42],[6,"LAX-037",5126,47.98],[7,"LAX-037",5765,53.96],[8,"LAX-037",5436,50.88],[9,"LAX-037",4890,45.77],[10,"LAX-037",5203,48.7],[11,"LAX-037",4668,43.69],[12,"LAX-037",5533,51.79],[13,"LAX-037",6177,57.82],[14,"LAX-037",6339,59.33],[1,"LAX-006",2230,19.51],[2,"LAX-006",2135,18.68],[3,"LAX-006",1921,16.81],[4,"LAX-006",1887,16.51],[5,"LAX-006",1919,16.79],[6,"LAX-006",2467,21.59],[7,"LAX-006",2379,20.82],[8,"LAX-006",1910,16.71],[9,"LAX-006",2129,18.63],[10,"LAX-006",1943,17.0],[11,"LAX-006",2227,19.49],[12,"LAX-006",1967,17.21],[13,"LAX-006",2650,23.19],[14,"LAX-006",2445,21.39],[1,"CHI-021",3666,35.16],[2,"CHI-021",3315,31.79],[3,"CHI-021",3288,31.53],[4,"CHI-021",3561,34.15],[5,"CHI-021",3671,35.2],[6,"CHI-021",4250,40.76],[7,"CHI-021",3913,37.53],[8,"CHI-021",3183,30.52],[9,"CHI-021",3169,30.39],[10,"CHI-021",3098,29.71],[11,"CHI-021",3488,33.45],[12,"CHI-021",3700,35.48],[13,"CHI-021",4236,40.62],[14,"CHI-021",3665,35.15],[1,"CHI-038",4566,41.41],[2,"CHI-038",4574,41.49],[3,"CHI-038",5200,47.16],[4,"CHI-038",4215,38.23],[5,"CHI-038",4511,40.91],[6,"CHI-038",6230,56.51],[7,"CHI-038",5804,52.64],[8,"CHI-038",4775,43.31],[9,"CHI-038",4651,42.18],[10,"CHI-038",4711,42.73],[11,"CHI-038",4835,43.85],[12,"CHI-038",4395,39.86],[13,"CHI-038",5949,53.96],[14,"CHI-038",5186,47.04],[1,"CHI-017",2027,20.33],[2,"CHI-017",2010,20.16],[3,"CHI-017",1915,19.21],[4,"CHI-017",1985,19.91],[5,"CHI-017",1914,19.2],[6,"CHI-017",2276,22.83],[7,"CHI-017",2381,23.88],[8,"CHI-017",1856,18.62],[9,"CHI-017",2027,20.33],[10,"CHI-017",1851,18.57],[11,"CHI-017",2073,20.79],[12,"CHI-017",1847,18.53],[13,"CHI-017",2350,23.57],[14,"CHI-017",2341,23.48],[1,"CHI-034",2533,18.01],[2,"CHI-034",2393,17.01],[3,"CHI-034",2317,16.47],[4,"CHI-034",2417,17.18],[5,"CHI-034",2050,14.58],[6,"CHI-034",2864,20.36],[7,"CHI-034",3215,22.86],[8,"CHI-034",2365,16.82],[9,"CHI-034",2356,16.75],[10,"CHI-034",2424,17.23],[11,"CHI-034",2473,17.58],[12,"CHI-034",2065,14.68],[13,"CHI-034",2581,18.35],[14,"CHI-034",2907,20.67],[1,"CHI-035",7650,73.52],[2,"CHI-035",8622,82.86],[3,"CHI-035",7842,75.36],[4,"CHI-035",7065,67.89],[5,"CHI-035",7385,70.97],[6,"CHI-035",8165,78.47],[7,"CHI-035",9641,92.65],[8,"CHI-035",7903,75.95],[9,"CHI-035",7789,74.85],[10,"CHI-035",8510,81.78],[11,"CHI-035",8568,82.34],[12,"CHI-035",7911,76.02],[13,"CHI-035",8526,81.93],[14,"CHI-035",10141,97.46],[1,"CHI-016",5046,51.52],[2,"CHI-016",4973,50.77],[3,"CHI-016",5170,52.79],[4,"CHI-016",4542,46.37],[5,"CHI-016",5471,55.86],[6,"CHI-016",5630,57.48],[7,"CHI-016",6242,63.73],[8,"CHI-016",4388,44.8],[9,"CHI-016",4610,47.07],[10,"CHI-016",5327,54.39],[11,"CHI-016",4806,49.07],[12,"CHI-016",5129,52.37],[13,"CHI-016",6059,61.86],[14,"CHI-016",5936,60.61],[1,"CHI-039",8641,79.32],[2,"CHI-039",7874,72.28],[3,"CHI-039",7134,65.49],[4,"CHI-039",7602,69.79],[5,"CHI-039",8251,75.74],[6,"CHI-039",10003,91.83],[7,"CHI-039",8853,81.27],[8,"CHI-039",7640,70.14],[9,"CHI-039",7708,70.76],[10,"CHI-039",7812,71.71],[11,"CHI-039",7328,67.27],[12,"CHI-039",7686,70.56],[13,"CHI-039",9344,85.78],[14,"CHI-039",10224,93.86],[1,"CHI-042",7723,73.21],[2,"CHI-042",7301,69.21],[3,"CHI-042",7193,68.19],[4,"CHI-042",7428,70.42],[5,"CHI-042",7005,66.41],[6,"CHI-042",8391,79.55],[7,"CHI-042",8503,80.61],[8,"CHI-042",7085,67.17],[9,"CHI-042",6852,64.96],[10,"CHI-042",7437,70.5],[11,"CHI-042",7688,72.88],[12,"CHI-042",6664,63.17],[13,"CHI-042",9025,85.56],[14,"CHI-042",8893,84.31],[1,"CHI-019",6109,71.23],[2,"CHI-019",5981,69.74],[3,"CHI-019",5464,63.71],[4,"CHI-019",5532,64.5],[5,"CHI-019",5996,69.91],[6,"CHI-019",7775,90.66],[7,"CHI-019",6350,74.04],[8,"CHI-019",6110,71.24],[9,"CHI-019",6413,74.78],[10,"CHI-019",5931,69.16],[11,"CHI-019",6183,72.09],[12,"CHI-019",5733,66.85],[13,"CHI-019",7271,84.78],[14,"CHI-019",6611,77.08],[1,"CHI-040",4820,48.01],[2,"CHI-040",5926,59.02],[3,"CHI-040",5277,52.56],[4,"CHI-040",5455,54.33],[5,"CHI-040",5142,51.21],[6,"CHI-040",6281,62.56],[7,"CHI-040",6790,67.63],[8,"CHI-040",5363,53.42],[9,"CHI-040",5736,57.13],[10,"CHI-040",5761,57.38],[11,"CHI-040",5717,56.94],[12,"CHI-040",5689,56.66],[13,"CHI-040",7511,74.81],[14,"CHI-040",6422,63.96]]};
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt = n => Math.round(n).toLocaleString("en-US");
+const fmtM = n => (n / 1e6).toFixed(2) + "M";
+const venue = {};
+D.plan.forEach(([id, metro, pub, type, spend, impr]) => venue[id] = { metro, pub, type, spend, impr });
+
+let curveChart, mixChart;
+
+function statusOf(p) {
+  if (p < 0.9) return ["Behind", "s-behind"];
+  if (p > 1.1) return ["Ahead", "s-ahead"];
+  return ["On track", "s-ok"];
+}
+
+function render() {
+  const asof = +document.getElementById("asof").value;
+  const metro = document.getElementById("metro").value;
+  document.getElementById("asofLabel").textContent = asof;
+  const keep = id => metro === "All" || venue[id].metro === metro;
+  const elapsed = asof / D.flightDays;
+
+  // plan totals
+  let planImpr = 0;
+  const byPub = {}, byType = {};
+  D.plan.forEach(([id, m, pub, type, spend, impr]) => {
+    if (!keep(id)) return;
+    planImpr += impr;
+    (byPub[pub] ??= { plan: 0, del: 0 }).plan += impr;
+    byType[type] = (byType[type] || 0) + spend;
+  });
+
+  // delivery
+  let delImpr = 0, delSpend = 0;
+  const daily = Array(D.flightDays).fill(0);
+  D.deliv.forEach(([day, id, impr, spend]) => {
+    if (!keep(id)) return;
+    daily[day - 1] += impr;
+    if (day <= asof) {
+      delImpr += impr; delSpend += spend;
+      byPub[venue[id].pub].del += impr;
+    }
+  });
+
+  const expected = planImpr * elapsed;
+  const pace = expected ? delImpr / expected : 0;
+  const projected = delImpr / elapsed;
+  document.getElementById("kPlan").textContent = fmtM(planImpr);
+  document.getElementById("kDel").textContent = fmtM(delImpr);
+  document.getElementById("kDelHint").textContent = `${(delImpr / planImpr * 100).toFixed(1)}% of plan · ${(elapsed * 100).toFixed(0)}% of flight`;
+  const kp = document.getElementById("kPace");
+  kp.textContent = pace.toFixed(2) + "x";
+  kp.style.color = pace < 0.9 ? css("--critical") : "";
+  document.getElementById("kCpm").textContent = "$" + (delSpend / delImpr * 1000).toFixed(2);
+  document.getElementById("kShort").textContent = fmt(Math.max(0, planImpr - projected));
+
+  // table
+  const rows = Object.entries(byPub).map(([pub, v]) => {
+    const exp = v.plan * elapsed, p = v.del / exp, short = Math.max(0, v.plan - v.del / elapsed);
+    return { pub, ...v, exp, p, short };
+  }).sort((a, b) => a.p - b.p);
+  document.querySelector("#pubTable tbody").innerHTML = rows.map(r => {
+    const [label, cls] = statusOf(r.p);
+    return `<tr><td>${r.pub}</td><td>${fmt(r.plan)}</td><td>${fmt(r.exp)}</td><td>${fmt(r.del)}</td>
+      <td>${r.p.toFixed(2)}x</td><td>${fmt(r.short)}</td>
+      <td><span class="status ${cls}"><span class="dot"></span>${label}</span></td></tr>`;
+  }).join("");
+
+  // curve
+  const days = Array.from({ length: D.flightDays }, (_, i) => i + 1);
+  let run = 0;
+  const cum = days.map(d => d <= asof ? (run += daily[d - 1]) : null);
+  const planLine = days.map(d => planImpr * d / D.flightDays);
+  const gridC = css("--grid"), txt2 = css("--text-2");
+  if (!curveChart) {
+    curveChart = new Chart(document.getElementById("curve"), {
+      type: "line",
+      data: { labels: days, datasets: [
+        { label: "Delivered", data: cum, borderColor: css("--series-1"), backgroundColor: css("--series-1"),
+          borderWidth: 2, pointRadius: 0, pointHoverRadius: 5, tension: 0 },
+        { label: "Plan", data: planLine, borderColor: css("--plan"), backgroundColor: css("--plan"),
+          borderWidth: 2, borderDash: [5, 4], pointRadius: 0, pointHoverRadius: 4 } ] },
+      options: {
+        maintainAspectRatio: false, animation: false,
+        interaction: { mode: "index", intersect: false },
+        plugins: {
+          legend: { position: "top", align: "start", labels: { color: txt2, boxWidth: 14, boxHeight: 2 } },
+          tooltip: { callbacks: { title: i => "Flight day " + i[0].label,
+            label: c => `${c.dataset.label}: ${fmt(c.parsed.y)}` } } },
+        scales: {
+          x: { title: { display: true, text: "Flight day", color: txt2 }, grid: { display: false }, ticks: { color: txt2, maxTicksLimit: 8 } },
+          y: { grid: { color: gridC }, border: { display: false }, ticks: { color: txt2, callback: v => (v / 1e6).toFixed(1) + "M" } } } }
+    });
+  } else {
+    curveChart.data.datasets[0].data = cum;
+    curveChart.data.datasets[1].data = planLine;
+    curveChart.update();
+  }
+
+  // mix
+  const types = Object.entries(byType).sort((a, b) => b[1] - a[1]);
+  if (!mixChart) {
+    mixChart = new Chart(document.getElementById("mix"), {
+      type: "bar",
+      data: { labels: types.map(t => t[0]), datasets: [{ label: "Planned spend", data: types.map(t => t[1]),
+        backgroundColor: css("--series-1"), borderRadius: 4, borderSkipped: "start", barThickness: 16 }] },
+      options: { indexAxis: "y", maintainAspectRatio: false, animation: false,
+        plugins: { legend: { display: false },
+          tooltip: { callbacks: { label: c => "$" + fmt(c.parsed.x) } } },
+        scales: { x: { grid: { color: gridC }, border: { display: false }, ticks: { color: txt2, callback: v => "$" + v / 1000 + "K" } },
+                  y: { grid: { display: false }, ticks: { color: txt2 } } } }
+    });
+  } else {
+    mixChart.data.labels = types.map(t => t[0]);
+    mixChart.data.datasets[0].data = types.map(t => t[1]);
+    mixChart.update();
+  }
+}
+
+document.getElementById("asof").addEventListener("input", render);
+document.getElementById("metro").addEventListener("change", render);
+render();
+</script>
+</body>
+</html>

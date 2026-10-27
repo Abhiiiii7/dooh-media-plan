@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOOH Pacing Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  color-scheme: light;
+  --surface: #fcfcfb; --card: #ffffff; --border: #e6e5e0;
+  --text: #0b0b0b; --text-2: #52514e; --muted: #8a8984;
+  --grid: #ecebe7; --series-1: #2a78d6; --plan: #9a9993;
+  --good: #0ca30c; --warn: #b07a00; --critical: #d03b3b;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface: #141413; --card: #1a1a19; --border: #2e2e2b;
+    --text: #f0efec; --text-2: #c3c2b7; --muted: #8f8e88;
+    --grid: #2a2a27; --series-1: #3987e5; --plan: #7d7c76;
+    --good: #0ca30c; --warn: #fab219; --critical: #e66767;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #141413; --card: #1a1a19; --border: #2e2e2b;
+  --text: #f0efec; --text-2: #c3c2b7; --muted: #8f8e88;
+  --grid: #2a2a27; --series-1: #3987e5; --plan: #7d7c76;
+  --good: #0ca30c; --warn: #fab219; --critical: #e66767;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--surface); color: var(--text);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+.sub { color: var(--text-2); margin: 0 0 20px; }
+.note { color: var(--muted); font-size: 12px; }
+.controls { display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center;
+  background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 16px; margin-bottom: 16px; }
+.controls label { color: var(--text-2); font-size: 13px; display: flex; gap: 8px; align-items: center; }
+select, input[type=range] { accent-color: var(--series-1); }
+select { background: var(--card); color: var(--text); border: 1px solid var(--border);
+  border-radius: 6px; padding: 4px 8px; font: inherit; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.kpi { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+.kpi .label { color: var(--text-2); font-size: 12px; }
+.kpi .value { font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; margin-top: 2px; }
+.kpi .hint { color: var(--muted); font-size: 12px; }
+.grid2 { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; margin-bottom: 12px; }
+@media (max-width: 800px) { .grid2 { grid-template-columns: 1fr; } }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+.card h2 { font-size: 15px; margin: 0 0 2px; }
+.card p.desc { color: var(--text-2); font-size: 12px; margin: 0 0 10px; }
+.chartbox { position: relative; height: 280px; }
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: 7px 8px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--text-2); font-weight: 500; font-size: 12px; }
+.status { display: inline-flex; gap: 5px; align-items: center; font-weight: 500; }
+.status .dot { width: 8px; height: 8px; border-radius: 50%; }
+.s-behind { color: var(--critical); } .s-behind .dot { background: var(--critical); }
+.s-ahead { color: var(--warn); } .s-ahead .dot { background: var(--warn); }
+.s-ok { color: var(--text-2); } .s-ok .dot { background: var(--good); }
+footer { margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>DOOH Pacing &amp; Delivery</h1>
+  <p class="sub">Brightside Grocers spring produce launch · New York, Los Angeles, Chicago · 28-day flight, $75K.
+    <span class="note">Simulated data for practice; brand and publishers are fictional.</span></p>
+
+  <div class="controls">
+    <label>Report as of flight day
+      <input type="range" id="asof" min="1" max="14" value="14">
+      <strong id="asofLabel">14</strong></label>
+    <label>Metro
+      <select id="metro"><option>All</option><option>New York</option><option>Los Angeles</option><option>Chicago</option></select></label>
+    <span class="note">Delivery data runs through day 14.</span>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">Planned impressions</div><div class="value" id="kPlan"></div><div class="hint">full flight</div></div>
+    <div class="kpi"><div class="label">Delivered to date</div><div class="value" id="kDel"></div><div class="hint" id="kDelHint"></div></div>
+    <div class="kpi"><div class="label">Pace index</div><div class="value" id="kPace"></div><div class="hint">1.00x = on plan</div></div>
+    <div class="kpi"><div class="label">Effective CPM</div><div class="value" id="kCpm"></div><div class="hint">delivered spend ÷ impressions</div></div>
+    <div class="kpi"><div class="label">Projected shortfall</div><div class="value" id="kShort"></div><div class="hint">if today's pace holds</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>Cumulative delivery vs plan</h2>
+      <p class="desc">The gap between the lines is impressions owed. Hover for daily values.</p>
+      <div class="chartbox"><canvas id="curve"></canvas></div>
+    </div>
+    <div class="card">
+      <h2>Planned spend by venue type</h2>
+      <p class="desc">Where the budget went after venue scoring.</p>
+      <div class="chartbox"><canvas id="mix"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Pacing by publisher</h2>
+    <p class="desc">Behind below 0.90x, ahead above 1.10x. This is the list to take to publishers for make-goods.</p>
+    <div class="tablewrap"><table id="pubTable">
+      <thead><tr><th>Publisher</th><th>Planned</th><th>Expected to date</th><th>Delivered</th><th>Pace</th><th>Projected shortfall</th><th>Status</th></tr></thead>
+      <tbody></tbody></table></div>
+  </div>
+
+  <footer class="note">Built from <code>data/media_plan.csv</code> and <code>data/delivery_daily.csv</code> by <code>src/build_dashboard.py</code>. Numbers match the Pacing sheet in <code>output/DOOH_Media_Plan.xlsx</code>.</footer>
+</div>
+
+<script>
+const D = __DATA__;
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt = n => Math.round(n).toLocaleString("en-US");
+const fmtM = n => (n / 1e6).toFixed(2) + "M";
+const venue = {};
+D.plan.forEach(([id, metro, pub, type, spend, impr]) => venue[id] = { metro, pub, type, spend, impr });
+
+let curveChart, mixChart;
+
+function statusOf(p) {
+  if (p < 0.9) return ["Behind", "s-behind"];
+  if (p > 1.1) return ["Ahead", "s-ahead"];
+  return ["On track", "s-ok"];
+}
+
+function render() {
+  const asof = +document.getElementById("asof").value;
+  const metro = document.getElementById("metro").value;
+  document.getElementById("asofLabel").textContent = asof;
+  const keep = id => metro === "All" || venue[id].metro === metro;
+  const elapsed = asof / D.flightDays;
+
+  // plan totals
+  let planImpr = 0;
+  const byPub = {}, byType = {};
+  D.plan.forEach(([id, m, pub, type, spend, impr]) => {
+    if (!keep(id)) return;
+    planImpr += impr;
+    (byPub[pub] ??= { plan: 0, del: 0 }).plan += impr;
+    byType[type] = (byType[type] || 0) + spend;
+  });
+
+  // delivery
+  let delImpr = 0, delSpend = 0;
+  const daily = Array(D.flightDays).fill(0);
+  D.deliv.forEach(([day, id, impr, spend]) => {
+    if (!keep(id)) return;
+    daily[day - 1] += impr;
+    if (day <= asof) {
+      delImpr += impr; delSpend += spend;
+      byPub[venue[id].pub].del += impr;
+    }
+  });
+
+  const expected = planImpr * elapsed;
+  const pace = expected ? delImpr / expected : 0;
+  const projected = delImpr / elapsed;
+  document.getElementById("kPlan").textContent = fmtM(planImpr);
+  document.getElementById("kDel").textContent = fmtM(delImpr);
+  document.getElementById("kDelHint").textContent = `${(delImpr / planImpr * 100).toFixed(1)}% of plan · ${(elapsed * 100).toFixed(0)}% of flight`;
+  const kp = document.getElementById("kPace");
+  kp.textContent = pace.toFixed(2) + "x";
+  kp.style.color = pace < 0.9 ? css("--critical") : "";
+  document.getElementById("kCpm").textContent = "$" + (delSpend / delImpr * 1000).toFixed(2);
+  document.getElementById("kShort").textContent = fmt(Math.max(0, planImpr - projected));
+
+  // table
+  const rows = Object.entries(byPub).map(([pub, v]) => {
+    const exp = v.plan * elapsed, p = v.del / exp, short = Math.max(0, v.plan - v.del / elapsed);
+    return { pub, ...v, exp, p, short };
+  }).sort((a, b) => a.p - b.p);
+  document.querySelector("#pubTable tbody").innerHTML = rows.map(r => {
+    const [label, cls] = statusOf(r.p);
+    return `<tr><td>${r.pub}</td><td>${fmt(r.plan)}</td><td>${fmt(r.exp)}</td><td>${fmt(r.del)}</td>
+      <td>${r.p.toFixed(2)}x</td><td>${fmt(r.short)}</td>
+      <td><span class="status ${cls}"><span class="dot"></span>${label}</span></td></tr>`;
+  }).join("");
+
+  // curve
+  const days = Array.from({ length: D.flightDays }, (_, i) => i + 1);
+  let run = 0;
+  const cum = days.map(d => d <= asof ? (run += daily[d - 1]) : null);
+  const planLine = days.map(d => planImpr * d / D.flightDays);
+  const gridC = css("--grid"), txt2 = css("--text-2");
+  if (!curveChart) {
+    curveChart = new Chart(document.getElementById("curve"), {
+      type: "line",
+      data: { labels: days, datasets: [
+        { label: "Delivered", data: cum, borderColor: css("--series-1"), backgroundColor: css("--series-1"),
+          borderWidth: 2, pointRadius: 0, pointHoverRadius: 5, tension: 0 },
+        { label: "Plan", data: planLine, borderColor: css("--plan"), backgroundColor: css("--plan"),
+          borderWidth: 2, borderDash: [5, 4], pointRadius: 0, pointHoverRadius: 4 } ] },
+      options: {
+        maintainAspectRatio: false, animation: false,
+        interaction: { mode: "index", intersect: false },
+        plugins: {
+          legend: { position: "top", align: "start", labels: { color: txt2, boxWidth: 14, boxHeight: 2 } },
+          tooltip: { callbacks: { title: i => "Flight day " + i[0].label,
+            label: c => `${c.dataset.label}: ${fmt(c.parsed.y)}` } } },
+        scales: {
+          x: { title: { display: true, text: "Flight day", color: txt2 }, grid: { display: false }, ticks: { color: txt2, maxTicksLimit: 8 } },
+          y: { grid: { color: gridC }, border: { display: false }, ticks: { color: txt2, callback: v => (v / 1e6).toFixed(1) + "M" } } } }
+    });
+  } else {
+    curveChart.data.datasets[0].data = cum;
+    curveChart.data.datasets[1].data = planLine;
+    curveChart.update();
+  }
+
+  // mix
+  const types = Object.entries(byType).sort((a, b) => b[1] - a[1]);
+  if (!mixChart) {
+    mixChart = new Chart(document.getElementById("mix"), {
+      type: "bar",
+      data: { labels: types.map(t => t[0]), datasets: [{ label: "Planned spend", data: types.map(t => t[1]),
+        backgroundColor: css("--series-1"), borderRadius: 4, borderSkipped: "start", barThickness: 16 }] },
+      options: { indexAxis: "y", maintainAspectRatio: false, animation: false,
+        plugins: { legend: { display: false },
+          tooltip: { callbacks: { label: c => "$" + fmt(c.parsed.x) } } },
+        scales: { x: { grid: { color: gridC }, border: { display: false }, ticks: { color: txt2, callback: v => "$" + v / 1000 + "K" } },
+                  y: { grid: { display: false }, ticks: { color: txt2 } } } }
+    });
+  } else {
+    mixChart.data.labels = types.map(t => t[0]);
+    mixChart.data.datasets[0].data = types.map(t => t[1]);
+    mixChart.update();
+  }
+}
+
+document.getElementById("asof").addEventListener("input", render);
+document.getElementById("metro").addEventListener("change", render);
+render();
+</script>
+</body>
+</html>

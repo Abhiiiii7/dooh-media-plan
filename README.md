@@ -4,7 +4,17 @@ A sample digital out-of-home (DOOH) media plan for a fictional grocery retailer,
 
 > **All data is simulated.** Venues, publishers, and the brand are fictional. I built this to practice the planning and reporting workflow used in programmatic DOOH, not to report on a real campaign.
 
-**Tools:** Excel (live-formula model), Power BI (pacing dashboard), Python (data simulation and plan logic)
+**Tools:** Excel (live-formula model), Python (data simulation and plan logic), JavaScript + Chart.js (interactive dashboard), Power BI (build guide included)
+
+---
+
+## Live dashboard
+
+**[Open the interactive dashboard](https://abhiiiii7.github.io/dooh-media-plan/dashboard/)** — pacing dashboard: as-of-day slider, metro filter, delivery vs plan, and publisher pacing with status flags.
+
+[![Dashboard](dashboard/screenshot.png)](https://abhiiiii7.github.io/dooh-media-plan/dashboard/)
+
+Built by `src/build_dashboard.py` from the project's own data, so the numbers always match the analysis.
 
 ---
 
@@ -92,6 +102,7 @@ Blue text = inputs, black = formulas, green = pulled from another sheet.
 ```bash
 pip install pandas numpy openpyxl
 python src/build_plan.py
+python src/build_dashboard.py
 ```
 
 The seed is fixed (`42`), so you get the same data every run.
